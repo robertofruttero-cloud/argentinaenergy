@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argentina Energy — Luz y Gas en Italia para Argentinos</title>
+<link rel="icon" type="image/png" href="logo argentina.png">
+<meta name="description" content="Argentina Energy: luce e gas in Italia per argentini e oriundi. Offerte trasparenti, assistenza in spagnolo rioplatense, voltura e subentro senza stress.">
+<script src="js/tailwind.js"></script>
+<script src="js/lucide.js"></script>
+<link rel="preconnect" href="fonts.googleapis.com">
+<link rel="stylesheet" href="css/inter.css">
+<style>
+  * { font-family: 'Inter', system-ui, sans-serif; }
+  html { scroll-behavior: smooth; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: translateY(0);} }
+  .animate-fadeIn { animation: fadeIn .25s ease-out; }
+  @keyframes bounceShort { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-4px);} }
+  .animate-bounce-short { animation: bounceShort 2.2s ease-in-out infinite; }
+  .line-clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .line-clamp-6 { display:-webkit-box; -webkit-line-clamp:6; -webkit-box-orient:vertical; overflow:hidden; }
+  .hidden-important { display: none !important; }
+  ::selection { background: #bae6fd; }
+</style>
+</head>
+<body class="antialiased text-slate-900 bg-white">
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar-header" class="sticky top-0 z-50 w-full shadow-sm">
+  <div class="bg-gradient-to-r from-sky-600 via-sky-500 to-blue-600 text-xs py-1.5 px-4 text-white shadow-inner">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1 bg-white/20 text-white font-semibold px-2 py-0.5 rounded-full border border-white/30 text-[11px]">
+          <span>🇦🇷</span><span>🇮🇹</span><span>Comunidad Argentina en Italia</span>
+        </span>
+        <span class="hidden md:inline text-sky-100">• <strong class="text-amber-200 font-bold">Más somos, más baratos seremos</strong></span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+3901721860282" class="hidden sm:flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-xs font-mono">
+          <i data-lucide="phone" class="w-3.5 h-3.5"></i><span>+39 0172 1860282</span>
+        </a>
+        <button onclick="openWhatsApp()" class="flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white px-2.5 py-0.5 rounded-full border border-emerald-400/50 transition-all font-semibold text-xs shadow-sm cursor-pointer">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i><span>WhatsApp: +39 393 3192262</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <nav id="main-nav" class="transition-all duration-300 bg-white/90 backdrop-blur-sm border-b border-sky-100/80 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <button onclick="scrollToId('hero')" class="flex items-center group text-left cursor-pointer py-1">
+        <img src="logo argentina.png" alt="Argentina Energy" class="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
+      </button>
+
+      <div class="hidden lg:flex items-center gap-1 xl:gap-2">
+        <button onclick="scrollToId('hero')" class="nav-link">Home</button>
+        <button onclick="scrollToId('luz-section')" class="nav-link">Ofertas Luz</button>
+        <button onclick="scrollToId('gas-section')" class="nav-link">Ofertas Gas</button>
+        <button onclick="scrollToId('calculadora-section')" class="nav-link">Simulador</button>
+        <button onclick="scrollToId('guia-section')" class="nav-link">Guía Factura</button>
+        <button onclick="scrollToId('faq-section')" class="nav-link flex items-center gap-1.5"><span>Doc. Argentina vs Italia</span><span class="text-[10px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 font-bold border border-amber-300"></span></button>
+        <button onclick="scrollToId('faq-section')" class="nav-link">Preguntas</button>
+        <button onclick="scrollToId('contacto-section')" class="nav-link">Contáctanos</button>
+      </div>
+
+      <div class="hidden sm:flex items-center gap-3">
+        <span class="inline-flex items-center gap-0.5 rounded-full border border-sky-200 bg-white/70 p-0.5 shadow-sm" data-nt>
+          <button data-nt data-lang="es" onclick="setLanguage('es')" class="lang-toggle flex-1 sm:flex-none px-2.5 py-1.5 rounded-full text-[10px] font-black transition-all cursor-pointer bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-sm"> 🇦🇷 ARG</button>
+          <button data-nt data-lang="it" onclick="setLanguage('it')" class="lang-toggle flex-1 sm:flex-none px-2.5 py-1.5 rounded-full text-[10px] font-bold transition-all cursor-pointer text-slate-600 hover:text-sky-700">🇮🇹 ITA</button>
+        </span>
+        <button onclick="openAuditModal()" class="flex items-center gap-2 px-3.5 py-2 text-xs font-bold rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 shadow-sm transition-all cursor-pointer">
+          <i data-lucide="file-search" class="w-3.5 h-3.5 text-amber-500"></i><span>Auditar Factura</span>
+        </button>
+        <button onclick="scrollToId('contacto-section')" class="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white shadow-md shadow-sky-500/25 transition-all transform hover:-translate-y-0.5 cursor-pointer">
+          <span>Pedir Asesoría</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <div class="flex lg:hidden items-center gap-2">
+        <button onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-sky-50 text-slate-700 hover:text-sky-600 hover:bg-sky-100 border border-sky-200">
+          <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+          <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden hidden bg-white border-b border-sky-100 px-4 pt-3 pb-6 mt-2 space-y-2 animate-fadeIn shadow-xl">
+      <div class="grid grid-cols-2 gap-2 mb-3">
+        <button onclick="scrollToId('luz-section'); toggleMobileMenu();" class="flex items-center gap-2 p-2.5 rounded-lg bg-sky-50 border border-sky-200 text-sky-800 text-xs font-bold"><i data-lucide="zap" class="w-4 h-4 text-amber-500"></i><span>Ofertas Luz</span></button>
+        <button onclick="scrollToId('gas-section'); toggleMobileMenu();" class="flex items-center gap-2 p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold"><i data-lucide="flame" class="w-4 h-4 text-orange-500"></i><span>Ofertas Gas</span></button>
+      </div>
+      <button onclick="scrollToId('hero'); toggleMobileMenu();" class="mobile-link">Home</button>
+      <button onclick="scrollToId('calculadora-section'); toggleMobileMenu();" class="mobile-link">Simulador</button>
+      <button onclick="scrollToId('guia-section'); toggleMobileMenu();" class="mobile-link">Guía Factura</button>
+      <button onclick="scrollToId('faq-section'); toggleMobileMenu();" class="mobile-link">Doc. Argentina vs Italia </button>
+      <button onclick="scrollToId('faq-section'); toggleMobileMenu();" class="mobile-link">Preguntas Frecuentes</button>
+      <button onclick="scrollToId('contacto-section'); toggleMobileMenu();" class="mobile-link">Contáctanos</button>
+      <div class="pt-3 border-t border-sky-100 flex flex-col gap-2">
+      <div class="flex items-center gap-0.5 rounded-full border border-sky-200 bg-white/70 p-0.5 shadow-sm" data-nt>
+        <button data-nt data-lang="es" onclick="setLanguage('es')" class="lang-toggle flex-1 sm:flex-none px-2.5 py-1.5 rounded-full text-[10px] font-black transition-all cursor-pointer bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-sm"> 🇦🇷 ARG</button>
+        <button data-nt data-lang="it" onclick="setLanguage('it')" class="lang-toggle flex-1 sm:flex-none px-2.5 py-1.5 rounded-full text-[10px] font-bold transition-all cursor-pointer text-slate-600 hover:text-sky-700">🇮🇹 ITA</button>
+      </div>
+        <button onclick="openAuditModal(); toggleMobileMenu();" class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-bold rounded-lg bg-sky-50 text-sky-800 border border-sky-200"><i data-lucide="file-search" class="w-4 h-4 text-amber-500"></i><span>Analizar Factura Gratis</span></button>
+        <button onclick="openWhatsApp()" class="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-bold rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white shadow-md"><i data-lucide="message-circle" class="w-4 h-4"></i><span>Consultar por WhatsApp</span></button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="relative pt-[1cm] pb-16 md:pt-[1cm] md:pb-24 overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(rgba(240,249,255,0.93), rgba(255,255,255,0.88), rgba(240,249,255,0.90)), url('img/bg-hero.jpg');">
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[1000px] h-[450px] bg-gradient-to-tr from-[#74acdf]/30 via-amber-300/20 to-[#74acdf]/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="absolute top-0 right-0 w-96 h-96 bg-[#74acdf]/25 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#74acdf]/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-4xl mx-auto space-y-6">
+      <div class="flex justify-center">
+        <img src="logo argentina.png" alt="Argentina Energy" style="width:16cm;max-width:100%;height:auto;object-fit:contain;">
+      </div>
+      <div class="inline-block mx-auto">
+        <div class="bg-gradient-to-r from-sky-500 via-sky-600 to-blue-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl border border-sky-200 shadow-md shadow-sky-500/20 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+                    <span class="text-base sm:text-lg">🇦🇷</span>
+          <h2 class="text-xs sm:text-sm md:text-base font-extrabold tracking-tight text-white">Argentina Energy <span class="text-sky-200 font-normal mx-1">-</span> Electricidad y gas en Italia para los argentinos</h2>
+          <span class="text-base sm:text-lg">🇮🇹</span>
+        </div>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 leading-tight">
+        Elegí tu oferta. <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-blue-600 to-amber-600">Energía justa y sin burocracia.</span>
+      </h1>
+
+      <p class="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        Selecciona el servicio por el cual querés tener información. Te recordamos que en esta fase nos estamos poniendo en contacto:
+        <span class="text-sky-800 font-bold"> ¡más somos, más baratos seremos!</span> Comparamos tarifas, gestionamos el cambio y te cuidamos el bolsillo.
+      </p>
+
+      <div class="flex flex-wrap justify-center items-center gap-3 pt-2 text-xs sm:text-sm text-slate-700 font-medium">
+        <div class="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-full border border-sky-200 shadow-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-sky-600"></i><span>Sin cortes de servicio</span></div>
+        <div class="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-full border border-sky-200 shadow-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500"></i><span>0€ costo de gestión</span></div>
+        <div class="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-full border border-sky-200 shadow-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i><span>Gestión de Voltura &amp; Subentro</span></div>
+      </div>
+    </div>
+
+    <div class="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div onclick="selectService('luz')" class="group relative bg-white hover:bg-sky-50/40 rounded-2xl p-6 border-2 border-sky-200 hover:border-sky-400 transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer flex flex-col justify-between">
+        <span class="absolute top-4 right-4 text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 border border-sky-300">Port-4</span>
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-sky-100 border border-sky-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-all"><i data-lucide="zap" class="w-6 h-6 text-sky-600"></i></div>
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">Oferta de Energía Eléctrica Doméstica</h3>
+          <p class="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">Tarifas de luz transparentes, fijas o indexadas al PUN sin recargos sorpresa ni costos ocultos.</p>
+          <div class="mt-4 pt-3 border-t border-sky-100 flex items-center gap-2 text-xs text-sky-800 font-bold"><i data-lucide="trending-down" class="w-4 h-4 text-emerald-600"></i><span>Ahorro promedio: <strong class="text-emerald-700">-20€ a -45€</strong> / mes</span></div>
+        </div>
+        <div class="mt-6"><button onclick="event.stopPropagation(); selectService('luz')" class="w-full py-2.5 px-4 rounded-xl bg-sky-50 hover:bg-sky-600 hover:text-white text-sky-800 font-bold text-xs flex items-center justify-center gap-2 border border-sky-300 transition-all shadow-sm cursor-pointer"><span>Contactános para saber toda la información</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+      </div>
+
+      <div onclick="selectService('gas')" class="group relative bg-white hover:bg-amber-50/40 rounded-2xl p-6 border-2 border-amber-200 hover:border-amber-400 transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer flex flex-col justify-between">
+        <span class="absolute top-4 right-4 text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">Port-5</span>
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-all"><i data-lucide="flame" class="w-6 h-6 text-amber-600"></i></div>
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Oferta de Gas Doméstico</h3>
+          <p class="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">Tarifas de gas metano calibradas para el invierno italiano con precio Smc claro y auditable.</p>
+          <div class="mt-4 pt-3 border-t border-amber-100 flex items-center gap-2 text-xs text-amber-800 font-bold"><i data-lucide="trending-down" class="w-4 h-4 text-emerald-600"></i><span>Ahorro promedio: <strong class="text-emerald-700">-30€ a -60€</strong> / mes</span></div>
+        </div>
+        <div class="mt-6"><button onclick="event.stopPropagation(); selectService('gas')" class="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-amber-500 hover:text-white text-amber-900 font-bold text-xs flex items-center justify-center gap-2 border border-amber-300 transition-all shadow-sm cursor-pointer"><span>Contactános para saber toda la información</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+      </div>
+
+      <div onclick="selectService('ambos')" class="group relative bg-gradient-to-b from-sky-50 to-white hover:from-sky-100/70 rounded-2xl p-6 border-2 border-sky-400 hover:border-sky-500 transition-all duration-300 shadow-lg cursor-pointer flex flex-col justify-between">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-black px-3 py-1 rounded-full bg-gradient-to-r from-amber-400 to-sky-400 text-slate-950 shadow-md uppercase tracking-wider">COMBO MÁS ELEGIDO</span>
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-sky-200 border border-sky-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-all"><i data-lucide="layers" class="w-6 h-6 text-sky-700"></i></div>
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-700 transition-colors">Pack Dual: Luz + Gas Hogar</h3>
+          <p class="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">Unificá tus dos suministros bajo un mismo asesor en español con doble bonificación comunitaria.</p>
+          <div class="mt-4 pt-3 border-t border-sky-200 flex items-center gap-2 text-xs text-sky-900 font-bold"><i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i><span>Descuento dual: <strong class="text-emerald-700">Hasta -75€</strong> / mes</span></div>
+        </div>
+        <div class="mt-6"><button onclick="event.stopPropagation(); selectService('ambos')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"><span>Quiero Asesoría Dual</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+      </div>
+
+      <div onclick="selectService('empresa')" class="group relative bg-white hover:bg-purple-50/40 rounded-2xl p-6 border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer flex flex-col justify-between">
+        <span class="absolute top-4 right-4 text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 border border-purple-300">B2B &amp; Pymes</span>
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-purple-100 border border-purple-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-all"><i data-lucide="building" class="w-6 h-6 text-purple-600"></i></div>
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-purple-700 transition-colors">Oferta Empresas &amp; Locales</h3>
+          <p class="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">Gastronomía, talleres, oficinas y autónomos. Reducción de costos de potencia e IVA deducible.</p>
+          <div class="mt-4 pt-3 border-t border-purple-100 flex items-center gap-2 text-xs text-purple-900 font-bold"><i data-lucide="trending-down" class="w-4 h-4 text-emerald-600"></i><span>Ahorro promedio: <strong class="text-emerald-700">-100€ a -350€</strong> / mes</span></div>
+        </div>
+        <div class="mt-6"><button onclick="event.stopPropagation(); selectService('empresa')" class="w-full py-2.5 px-4 rounded-xl bg-purple-50 hover:bg-purple-600 hover:text-white text-purple-800 font-bold text-xs flex items-center justify-center gap-2 border border-purple-300 transition-all shadow-sm cursor-pointer"><span>Contactar para Negocio</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+      </div>
+    </div>
+
+    <div class="mt-10 p-4 sm:p-6 rounded-2xl bg-white border border-sky-200 shadow-md flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-4 text-left">
+        <div class="p-3 rounded-xl bg-amber-100 border border-amber-300 shrink-0"><i data-lucide="users" class="w-6 h-6 text-amber-600"></i></div>
+        <div>
+          <h4 class="text-sm sm:text-base font-bold text-slate-900">¿Tenés tu última bolletta (factura) a mano?</h4>
+          <p class="text-xs text-slate-600">Subila o envianos una foto por WhatsApp y te hacemos una comparación sin costo en 24hs.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 w-full md:w-auto shrink-0">
+        <button onclick="openAuditModal()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-bold text-xs sm:text-sm shadow-md transition-all cursor-pointer">Auditar mi Factura Gratis</button>
+        <button onclick="scrollToId('calculadora-section')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-800 font-bold text-xs sm:text-sm border border-sky-200 transition-all cursor-pointer shadow-sm">Simular Ahorro</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="py-12 border-y border-sky-100 bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.94)), url('img/bg-stats.jpg');">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <p class="text-xs font-bold uppercase tracking-widest text-sky-600">Poder de compra grupal para compatriotas</p>
+      <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Resultados reales de la comunidad argentina en Italia</h2>
+      <p class="text-sm text-slate-600 mt-2">Unidos logramos mejores condiciones frente a las grandes compañías energéticas italianas.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="p-6 rounded-2xl relative overflow-hidden bg-gradient-to-b from-sky-50 to-white border-2 border-sky-300 shadow-md">
+        <div class="flex items-center justify-between mb-4"><span class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">2100+</span><div class="p-2.5 rounded-xl bg-sky-50 border border-sky-200"><i data-lucide="users" class="w-5 h-5 text-sky-600"></i></div></div>
+        <h3 class="text-base font-bold text-slate-900 mb-1">Familias Atendidas</h3>
+        <p class="text-xs text-slate-600 mb-4 min-h-[32px]">Argentinos residiendo en toda Italia</p>
+        <div class="pt-3 border-t border-sky-100 flex items-center justify-between text-xs"><span class="text-slate-600">Ahorro promedio:</span><span class="font-extrabold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md border border-emerald-300">-20€/mes</span></div>
+      </div>
+      <div class="p-6 rounded-2xl relative overflow-hidden bg-white border border-sky-200/80 shadow-sm hover:shadow-md transition-all">
+        <div class="flex items-center justify-between mb-4"><span class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">780</span><div class="p-2.5 rounded-xl bg-sky-50 border border-sky-200"><i data-lucide="building-2" class="w-5 h-5 text-purple-600"></i></div></div>
+        <h3 class="text-base font-bold text-slate-900 mb-1">Empresas &amp; Pymes</h3>
+        <p class="text-xs text-slate-600 mb-4 min-h-[32px]">Negocios con costos optimizados</p>
+        <div class="pt-3 border-t border-sky-100 flex items-center justify-between text-xs"><span class="text-slate-600">Ahorro promedio:</span><span class="font-extrabold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md border border-emerald-300">-100€/mes</span></div>
+      </div>
+      <div class="p-6 rounded-2xl relative overflow-hidden bg-white border border-sky-200/80 shadow-sm hover:shadow-md transition-all">
+        <div class="flex items-center justify-between mb-4"><span class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">98%</span><div class="p-2.5 rounded-xl bg-sky-50 border border-sky-200"><i data-lucide="heart-handshake" class="w-5 h-5 text-amber-500"></i></div></div>
+        <h3 class="text-base font-bold text-slate-900 mb-1">Trámites sin Cortes</h3>
+        <p class="text-xs text-slate-600 mb-4 min-h-[32px]">Cambios de proveedor sin interrupción de servicio</p>
+        <div class="pt-3 border-t border-sky-100 flex items-center justify-between text-xs"><span class="text-slate-600">Activación:</span><span class="font-extrabold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md border border-emerald-300">10-15 días</span></div>
+      </div>
+      <div class="p-6 rounded-2xl relative overflow-hidden bg-gradient-to-b from-sky-50 to-white border-2 border-sky-300 shadow-md">
+        <div class="flex items-center justify-between mb-4"><span class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">4.9★</span><div class="p-2.5 rounded-xl bg-sky-50 border border-sky-200"><i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i></div></div>
+        <h3 class="text-base font-bold text-slate-900 mb-1">Satisfacción del Cliente</h3>
+        <p class="text-xs text-slate-600 mb-4 min-h-[32px]">Valoración de la comunidad argentina</p>
+        <div class="pt-3 border-t border-sky-100 flex items-center justify-between text-xs"><span class="text-slate-600">Atención:</span><span class="font-extrabold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md border border-emerald-300">100% en español</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ELECTRICITY SECTION ============ -->
+<section id="luz-section" class="py-16 md:py-24 relative overflow-hidden bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.93)), url('img/bg-luz.jpg');">
+  <div class="absolute top-10 left-0 w-96 h-96 bg-sky-200/40 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-4xl mx-auto text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-100 border border-sky-300 text-sky-800 text-xs font-bold uppercase tracking-wider mb-4"><i data-lucide="zap" class="w-4 h-4 text-sky-600"></i><span>Servicios de Electricidad en Italia</span></div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Oferta para servicios de <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">Energía Eléctrica</span></h2>
+      <div class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed space-y-4 max-w-3xl mx-auto">
+        <p>En <strong class="text-sky-800 font-bold">Argentina Energy</strong> ayudamos a los argentinos que viven en Italia a acceder a servicios de luz y gas confiables, a precios justos y sin complicaciones.</p>
+        <p class="text-slate-500 text-sm sm:text-base">Sabemos que muchos compatriotas enfrentan dificultades al momento de contratar, entender o comparar tarifas energéticas en Italia. Por eso, nuestro objetivo es facilitarte todo el proceso, cuidando tu bolsillo y tu tranquilidad.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-sky-50/50 rounded-2xl p-7 border-2 border-sky-200 hover:border-sky-400 transition-all hover:shadow-lg flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4"><span class="text-3xl font-black text-sky-300 group-hover:text-sky-600 transition-colors">01.</span><div class="p-2.5 rounded-xl bg-white border border-sky-200 shadow-sm"><i data-lucide="trending-down" class="w-5 h-5 text-sky-600"></i></div></div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2.5">Ahorro real en tu factura</h3>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">Comparamos las mejores tarifas del mercado y te ayudamos a reducir el costo de tu luz y gas sin sacrificar calidad.</p>
+          <p class="text-xs text-slate-500 mt-3">Nuestros convenios con proveedores confiables nos permiten ofrecer precios exclusivos y transparentes, sin costos ocultos ni cláusulas engañosas.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-sky-200 flex items-center gap-2 text-xs font-bold text-sky-800"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i><span>Auditoría de tu factura anterior sin cargo</span></div>
+      </div>
+      <div class="bg-sky-50/50 rounded-2xl p-7 border-2 border-sky-200 hover:border-sky-400 transition-all hover:shadow-lg flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4"><span class="text-3xl font-black text-sky-300 group-hover:text-sky-600 transition-colors">02.</span><div class="p-2.5 rounded-xl bg-white border border-sky-200 shadow-sm"><i data-lucide="message-square-heart" class="w-5 h-5 text-sky-600"></i></div></div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2.5">Asesoramiento en tu idioma</h3>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">Hablamos español y entendemos las necesidades de los argentinos en Italia.</p>
+          <p class="text-xs text-slate-500 mt-3">Te explicamos cada detalle de tu contrato de forma simple, clara y humana, para que tomes decisiones con total confianza sin lidiar con tecnicismos italianos confusos.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-sky-200 flex items-center gap-2 text-xs font-bold text-sky-800"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i><span>Atención directa vía WhatsApp y teléfono</span></div>
+      </div>
+      <div class="bg-sky-50/50 rounded-2xl p-7 border-2 border-sky-200 hover:border-sky-400 transition-all hover:shadow-lg flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4"><span class="text-3xl font-black text-sky-300 group-hover:text-sky-600 transition-colors">03.</span><div class="p-2.5 rounded-xl bg-white border border-sky-200 shadow-sm"><i data-lucide="file-check-2" class="w-5 h-5 text-sky-600"></i></div></div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2.5">Trámites fáciles, rápidos y sin estrés</h3>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">Nos ocupamos de todo el proceso por vos: análisis de facturas, cambio de proveedor, activación del servicio y asistencia continua.</p>
+          <p class="text-xs text-slate-500 mt-3">Olvidate de la burocracia italiana — con <strong class="text-sky-700">Argentina Energy</strong>, tu energía se gestiona en minutos y sin complicaciones.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-sky-200 flex items-center gap-2 text-xs font-bold text-sky-800"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i><span>Voltura, Subentro y Allaccio sin filas</span></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-sky-100 to-sky-50 border border-sky-200 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4"><div class="p-3.5 rounded-xl bg-sky-200 text-sky-800"><i data-lucide="users" class="w-7 h-7"></i></div><div><p class="text-3xl font-black text-slate-900">1320</p><p class="text-sm font-bold text-sky-900">Usuarios Residenciales</p><p class="text-xs text-slate-600">Familias argentinas protegidas</p></div></div>
+        <div class="text-right"><span class="text-2xl sm:text-3xl font-black text-emerald-700 block">-20 €</span><span class="text-xs text-slate-600 font-semibold">Euros en factura promedio</span></div>
+      </div>
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-purple-100 to-purple-50 border border-purple-200 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4"><div class="p-3.5 rounded-xl bg-purple-200 text-purple-800"><i data-lucide="building-2" class="w-7 h-7"></i></div><div><p class="text-3xl font-black text-slate-900">780</p><p class="text-sm font-bold text-purple-900">Empresas &amp; Pymes</p><p class="text-xs text-slate-600">Negocios con costo optimizado</p></div></div>
+        <div class="text-right"><span class="text-2xl sm:text-3xl font-black text-emerald-700 block">-100 €</span><span class="text-xs text-slate-600 font-semibold">Euros en factura promedio</span></div>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <div>
+          <h3 class="text-xl font-black text-slate-900">Planes de Luz Disponibles para Vos</h3>
+          <p class="text-xs text-slate-600">Seleccioná el plan que mejor se adapte a tu consumo o consultanos para recomendarte el ideal.</p>
+        </div>
+        <button onclick="openAuditModal()" class="hidden sm:inline-flex text-xs font-bold text-sky-700 hover:text-sky-900 underline underline-offset-4 cursor-pointer">¿No sabés cuánto consumís? Analizamos tu factura gratis →</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-7 rounded-2xl border-2 bg-gradient-to-b from-sky-50 to-white border-sky-400 shadow-lg">
+          <div class="flex justify-between items-start mb-4">
+            <div><span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 border border-sky-300">PRECIO FIJO</span><h4 class="text-lg font-bold text-slate-900 mt-2">Tarifa Luz Fija 12 Meses</h4></div>
+            <div class="text-right"><span class="text-2xl font-black text-sky-700">0,129 €</span><span class="text-xs text-slate-500 block">/ kWh</span></div>
+          </div>
+          <p class="text-xs text-slate-600 mb-5 leading-relaxed">Precio bloqueado durante 12 meses: pagás siempre lo mismo por kWh, sin importar lo que suba el mercado mayorista italiano.</p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-700">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5"></i><span>Precio kWh fijo durante 12 meses</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5"></i><span>Energía 100% de fuentes certificadas</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5"></i><span>Sin permanencia mínima obligatoria</span></li>
+          </ul>
+          <div class="pt-4 border-t border-sky-100 flex items-center justify-between"><span class="text-xs font-bold text-emerald-700">Ahorra hasta -45€/mes</span><button onclick="selectPlan('luz-fissa','Tarifa Luz Fija 12 Meses')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-md cursor-pointer"><span>Elegir Plan</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+        </div>
+
+        <div class="p-7 rounded-2xl border-2 bg-white border-slate-200 hover:border-sky-300 shadow-sm transition-all">
+          <div class="flex justify-between items-start mb-4">
+            <div><span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 border border-sky-300">VARIABLE</span><h4 class="text-lg font-bold text-slate-900 mt-2">Tarifa Luz Variable</h4></div>
+            <div class="text-right"><span class="text-2xl font-black text-sky-700">PUN+0,018€</span><span class="text-xs text-slate-500 block">/ kWh</span></div>
+          </div>
+          <p class="text-xs text-slate-600 mb-5 leading-relaxed">Seguís el precio mayorista oficial (PUN) con un spread transparente y bajo. Ideal si tu consumo es flexible y querés aprovechar bajadas de mercado.</p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-700">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5"></i><span>Spread fijo y transparente sobre el PUN</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5"></i><span>Sin costos de activación</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5"></i><span>Ideal para consumos bajos o variables</span></li>
+          </ul>
+          <div class="pt-4 border-t border-sky-100 flex items-center justify-between"><span class="text-xs font-bold text-emerald-700">Ahorra hasta -25€/mes</span><button onclick="selectPlan('luz-pun','Tarifa Luz Variable')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-md cursor-pointer"><span>Elegir Plan</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GAS SECTION ============ -->
+<section id="gas-section" class="py-16 md:py-24 relative overflow-hidden bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,251,240,0.93), rgba(255,255,255,0.95)), url('img/bg-gas.jpg');">
+  <div class="absolute bottom-10 right-0 w-96 h-96 bg-amber-200/40 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-4xl mx-auto text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-wider mb-4"><i data-lucide="flame" class="w-4 h-4 text-amber-600"></i><span>Servicios de Gas Metano en Italia</span></div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Oferta para servicios de <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700">Gas Doméstico &amp; Negocios</span></h2>
+      <div class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed space-y-4 max-w-3xl mx-auto">
+        <p>En <strong class="text-amber-800 font-bold">Argentina Energy</strong> ayudamos a los argentinos que viven en Italia a acceder a servicios de luz y gas confiables, a precios justos y sin complicaciones.</p>
+        <p class="text-slate-500 text-sm sm:text-base">Sabemos que muchos compatriotas enfrentan dificultades al momento de contratar, entender o comparar tarifas energéticas en Italia. Por eso, nuestro objetivo es facilitarte todo el proceso, cuidando tu bolsillo y tu tranquilidad.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-amber-50/40 rounded-2xl p-7 border-2 border-amber-200 hover:border-amber-400 transition-all hover:shadow-lg flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4"><span class="text-3xl font-black text-amber-300 group-hover:text-amber-600 transition-colors">01.</span><div class="p-2.5 rounded-xl bg-white border border-amber-200 shadow-sm"><i data-lucide="trending-down" class="w-5 h-5 text-amber-600"></i></div></div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2.5">Ahorro real en tu factura</h3>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">Comparamos las mejores tarifas del mercado y te ayudamos a reducir el costo de tu luz y gas sin sacrificar calidad.</p>
+          <p class="text-xs text-slate-500 mt-3">Nuestros convenios con proveedores confiables nos permiten ofrecer precios exclusivos y transparentes, sin costos ocultos ni cláusulas engañosas.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-amber-200 flex items-center gap-2 text-xs font-bold text-amber-900"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i><span>Precio Smc optimizado para el invierno</span></div>
+      </div>
+      <div class="bg-amber-50/40 rounded-2xl p-7 border-2 border-amber-200 hover:border-amber-400 transition-all hover:shadow-lg flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4"><span class="text-3xl font-black text-amber-300 group-hover:text-amber-600 transition-colors">02.</span><div class="p-2.5 rounded-xl bg-white border border-amber-200 shadow-sm"><i data-lucide="message-square-heart" class="w-5 h-5 text-amber-600"></i></div></div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2.5">Asesoramiento en tu idioma</h3>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">Hablamos español y entendemos las necesidades de los argentinos en Italia.</p>
+          <p class="text-xs text-slate-500 mt-3">Te explicamos cada detalle de tu contrato de forma simple, clara y humana, para que tomes decisiones con total confianza y sin sorpresas en tu cuenta bancaria.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-amber-200 flex items-center gap-2 text-xs font-bold text-amber-900"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i><span>Explicación clara de tu código PDR</span></div>
+      </div>
+      <div class="bg-amber-50/40 rounded-2xl p-7 border-2 border-amber-200 hover:border-amber-400 transition-all hover:shadow-lg flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4"><span class="text-3xl font-black text-amber-300 group-hover:text-amber-600 transition-colors">03.</span><div class="p-2.5 rounded-xl bg-white border border-amber-200 shadow-sm"><i data-lucide="file-check-2" class="w-5 h-5 text-amber-600"></i></div></div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2.5">Trámites fáciles, rápidos y sin estrés</h3>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">Nos ocupamos de todo el proceso por vos: análisis de facturas, cambio de proveedor, activación del servicio y asistencia continua.</p>
+          <p class="text-xs text-slate-500 mt-3">Olvidate de la burocracia italiana — con <strong class="text-amber-700">Argentina Energy</strong>, tu energía se gestiona en minutos y sin complicaciones.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-amber-200 flex items-center gap-2 text-xs font-bold text-amber-900"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i><span>Autolectura fácil para evitar facturas estimadas</span></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-amber-100 to-amber-50 border border-amber-200 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4"><div class="p-3.5 rounded-xl bg-amber-200 text-amber-800"><i data-lucide="users" class="w-7 h-7"></i></div><div><p class="text-3xl font-black text-slate-900">1320</p><p class="text-sm font-bold text-amber-900">Usuarios Residenciales</p><p class="text-xs text-slate-600">Hogares con calefacción segura</p></div></div>
+        <div class="text-right"><span class="text-2xl sm:text-3xl font-black text-emerald-700 block">-20 €</span><span class="text-xs text-slate-600 font-semibold">Euros en factura promedio</span></div>
+      </div>
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-orange-100 to-orange-50 border border-orange-200 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4"><div class="p-3.5 rounded-xl bg-orange-200 text-orange-800"><i data-lucide="building-2" class="w-7 h-7"></i></div><div><p class="text-3xl font-black text-slate-900">780</p><p class="text-sm font-bold text-orange-900">Empresas &amp; Negocios</p><p class="text-xs text-slate-600">Gas industrial y cocina comercial</p></div></div>
+        <div class="text-right"><span class="text-2xl sm:text-3xl font-black text-emerald-700 block">-100 €</span><span class="text-xs text-slate-600 font-semibold">Euros en factura promedio</span></div>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <div>
+          <h3 class="text-xl font-black text-slate-900">Planes de Gas Metano para tu Hogar o Negocio</h3>
+          <p class="text-xs text-slate-600">Elegí si preferís un precio blindado todo el año o indexado al mercado oficial PSV.</p>
+        </div>
+        <button onclick="openAuditModal()" class="hidden sm:inline-flex text-xs font-bold text-amber-700 hover:text-amber-900 underline underline-offset-4 cursor-pointer">Envíanos tu factura para comparar el costo por Smc →</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-7 rounded-2xl border-2 bg-gradient-to-b from-amber-50 to-white border-amber-400 shadow-lg">
+          <div class="flex justify-between items-start mb-4">
+            <div><span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">PRECIO BLINDADO</span><h4 class="text-lg font-bold text-slate-900 mt-2">Tariffa Gas Fissa 12 Mesi</h4></div>
+            <div class="text-right"><span class="text-2xl font-black text-amber-700">0,45 €</span><span class="text-xs text-slate-500 block">/ Smc</span></div>
+          </div>
+          <p class="text-xs text-slate-600 mb-5 leading-relaxed">Precio por Smc congelado durante un año entero. Pagá siempre lo mismo aunque llegue el invierno más frío.</p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-700">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5"></i><span>Precio Smc fijo 12 meses</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5"></i><span>Sin sorpresas en la temporada de calefacción</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5"></i><span>Autolectura simple vía app o WhatsApp</span></li>
+          </ul>
+          <div class="pt-4 border-t border-amber-100 flex items-center justify-between"><span class="text-xs font-bold text-emerald-700">Ahorra hasta -60€/mes</span><button onclick="selectPlan('gas-fissa','Tariffa Gas Fissa 12 Mesi')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-all shadow-md cursor-pointer"><span>Elegir Plan</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+        </div>
+
+        <div class="p-7 rounded-2xl border-2 bg-white border-slate-200 hover:border-amber-300 shadow-sm transition-all">
+          <div class="flex justify-between items-start mb-4">
+            <div><span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">VARIABLE</span><h4 class="text-lg font-bold text-slate-900 mt-2">Tarifa Luz Variable</h4></div>
+            <div class="text-right"><span class="text-2xl font-black text-amber-700">PSV+0,09€</span><span class="text-xs text-slate-500 block">/ Smc</span></div>
+          </div>
+          <p class="text-xs text-slate-600 mb-5 leading-relaxed">Seguís el precio mayorista oficial del gas (PSV) con un margen bajo y visible en cada factura.</p>
+          <ul class="space-y-2 mb-6 text-xs text-slate-700">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5"></i><span>Margen transparente sobre el PSV oficial</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5"></i><span>Sin costos de activación ni penalidades</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5"></i><span>Ideal para consumos bajos fuera de invierno</span></li>
+          </ul>
+          <div class="pt-4 border-t border-amber-100 flex items-center justify-between"><span class="text-xs font-bold text-emerald-700">Ahorra hasta -30€/mes</span><button onclick="selectPlan('gas-psv','Tarifa Luz Variable')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-all shadow-md cursor-pointer"><span>Elegir Plan</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAVINGS CALCULATOR ============ -->
+<section id="calculadora-section" class="py-16 md:py-24 relative overflow-hidden bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(240,249,255,0.94), rgba(255,255,255,0.90), rgba(240,249,255,0.92)), url('img/bg-calc.jpg');">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 border border-sky-300 text-sky-800 text-xs font-bold mb-3"><i data-lucide="calculator" class="w-3.5 h-3.5"></i><span>Simulador de Factura Italiana</span></div>
+      <h2 class="text-3xl sm:text-4xl font-black text-slate-900">Calculá cuánto podés ahorrar en tu factura</h2>
+      <p class="text-sm sm:text-base text-slate-600 mt-3">Ingresá tu gasto promedio mensual en Italia para ver el impacto estimado al unirte a nuestras tarifas comunitarias.</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-white border-2 border-sky-200 rounded-3xl p-6 sm:p-10 shadow-xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">1. ¿Para qué tipo de suministro?</label>
+            <div class="grid grid-cols-2 gap-3 p-1.5 bg-sky-50/70 rounded-xl border border-sky-200">
+              <button type="button" id="profile-hogar" onclick="setProfile('hogar')" class="py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm transition-all cursor-pointer bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md">🏠 Casa / Residencial</button>
+              <button type="button" id="profile-empresa" onclick="setProfile('empresa')" class="py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm transition-all cursor-pointer text-slate-600 hover:text-slate-900">🏢 Negocio / Partita IVA</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">2. ¿Qué servicios querés optimizar?</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" id="service-luz" onclick="setCalcService('luz')" class="p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1 cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-300"><i data-lucide="zap" class="w-5 h-5 text-sky-600"></i><span class="text-xs font-bold">Solo Luz</span></button>
+              <button type="button" id="service-gas" onclick="setCalcService('gas')" class="p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1 cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-amber-300"><i data-lucide="flame" class="w-5 h-5 text-amber-600"></i><span class="text-xs font-bold">Solo Gas</span></button>
+              <button type="button" id="service-dual" onclick="setCalcService('dual')" class="p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1 cursor-pointer bg-sky-100 border-sky-600 text-sky-950 ring-2 ring-sky-500 font-bold shadow-sm"><i data-lucide="layers" class="w-5 h-5 text-sky-700"></i><span class="text-xs font-bold">Luz + Gas</span></button>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-600">3. ¿Cuánto pagás actualmente por mes en Italia?</label>
+              <span id="bill-display" class="text-xl font-black text-sky-800 bg-sky-50 px-3.5 py-1 rounded-lg border border-sky-300 shadow-sm">140 € <span class="text-xs text-slate-500 font-normal">/mes</span></span>
+            </div>
+            <input type="range" id="bill-slider" min="40" max="400" step="5" value="140" oninput="updateCalculator()" class="w-full h-2.5 bg-sky-100 rounded-lg appearance-none cursor-pointer accent-sky-600">
+            <div class="flex justify-between text-[11px] text-slate-500 mt-1 font-medium"><span id="range-min">Min: 40€</span><span id="range-avg">Promedio: 120€ - 180€</span><span id="range-max">Max: 400€+</span></div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-gradient-to-br from-sky-600 via-sky-700 to-blue-800 rounded-2xl p-6 text-white text-center relative overflow-hidden shadow-xl">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+          <span class="text-[11px] font-black uppercase tracking-wider text-white bg-white/20 px-3 py-1 rounded-full border border-white/30 inline-block mb-3">Tu Ahorro Estimado</span>
+          <div class="my-2"><p class="text-xs text-sky-100">Ahorro mensual aproximado</p><div class="text-4xl sm:text-5xl font-black text-amber-300"><span id="monthly-saving">-25 €</span><span class="text-sm font-medium text-sky-100 ml-1">/mes</span></div></div>
+          <div class="my-4 p-3 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-around">
+            <div><p class="text-[10px] text-sky-200 uppercase font-semibold">Ahorro Anual</p><p id="annual-saving" class="text-lg font-black text-amber-300">~300 €/año</p></div>
+            <div class="h-8 w-px bg-white/20"></div>
+            <div><p class="text-[10px] text-sky-200 uppercase font-semibold">Tu nueva cuota</p><p id="new-bill" class="text-lg font-black text-white">~115 €/mes</p></div>
+          </div>
+          <ul class="text-xs text-sky-50 text-left space-y-1.5 mb-6 font-medium">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-300 shrink-0"></i><span>Traspaso 100% gratuito sin corte de luz/gas</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-300 shrink-0"></i><span>Sin permanencia mínima obligatoria</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-300 shrink-0"></i><span>Atención directa en español por WhatsApp</span></li>
+          </ul>
+          <button onclick="applyCalculation()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"><span>Quiero este Ahorro</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+          <p class="text-[10px] text-sky-200 mt-2">*Estimación basada en tarifas de grupo actuales frente a la media del mercado italiano.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BILL GUIDE ============ -->
+<section id="guia-section" class="py-16 md:py-24 border-t border-sky-100 relative bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(240,249,255,0.95), rgba(240,249,255,0.93)), url('img/bg-guia.jpg');">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 border border-sky-300 text-sky-800 text-xs font-bold mb-3"><i data-lucide="file-text" class="w-3.5 h-3.5"></i><span>Guía Práctica para Argentinos en Italia</span></div>
+      <h2 class="text-3xl sm:text-4xl font-black text-slate-900">Cómo entender tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">Bolletta Italiana</span></h2>
+      <p class="text-sm sm:text-base text-slate-600 mt-2">La burocracia energética en Italia puede ser confusa. Acá te explicamos lo esencial en criollo para que nunca más pagues de más.</p>
+    </div>
+
+    <div class="flex justify-center mb-10">
+      <div class="inline-flex p-1.5 bg-white rounded-2xl border border-sky-200 shadow-sm gap-1 sm:gap-2 flex-wrap justify-center">
+        <button id="guide-tab-partes" onclick="setGuideTab('partes')" class="px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md">1. Partes de la Factura</button>
+        <button id="guide-tab-tramites" onclick="setGuideTab('tramites')" class="px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer text-slate-600 hover:text-slate-900">2. Voltura vs Subentro</button>
+        <button id="guide-tab-seguridad" onclick="setGuideTab('seguridad')" class="px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer text-slate-600 hover:text-slate-900">3. Alerta de Estafas</button>
+      </div>
+    </div>
+
+    <div id="guide-panel-partes" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-6 bg-white border-2 border-sky-200 rounded-3xl p-6 shadow-xl relative">
+        <div class="flex items-center justify-between pb-4 border-b border-sky-100">
+          <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-amber-400"></div><div class="w-3 h-3 rounded-full bg-emerald-400"></div><span class="text-xs text-slate-500 font-mono ml-2">Fattura_Energia_Esempio.pdf</span></div>
+          <span class="text-[10px] uppercase font-black text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-300">ARERA Standard</span>
+        </div>
+        <div class="space-y-4 mt-5 text-xs font-mono">
+          <div class="p-3.5 bg-sky-50 rounded-xl border border-sky-200">
+            <p class="text-sky-900 font-bold font-sans">DATI FORNITURA / DATOS DE SUMINISTRO:</p>
+            <p class="text-slate-700 mt-1">Codice POD: <span class="text-sky-700 font-bold font-mono">IT001E12345678X</span> (Tu DNI de luz)</p>
+            <p class="text-slate-700">Codice PDR: <span class="text-amber-700 font-bold font-mono">01234567890123</span> (Tu DNI de gas)</p>
+            <p class="text-slate-500 text-[10px] mt-1">Potenza Impegnata: 3.0 kW | Mercato Libero</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+            <p class="font-bold text-slate-800 text-[11px] font-sans">Sintesi Importi Fatturati (Desglose):</p>
+            <div class="flex justify-between items-center p-2 rounded-lg bg-sky-100/70 border border-sky-300 text-sky-950"><div><span class="font-bold">1. Spesa per la materia energia</span><p class="text-[10px] text-sky-700 font-semibold">★ El único punto negociable donde te ahorramos dinero</p></div><span class="font-black text-sm text-sky-900">48.50 €</span></div>
+            <div class="flex justify-between items-center p-2 rounded-lg bg-white border border-slate-200 text-slate-600"><div><span class="font-medium">2. Spesa trasporto e gestione contatore</span><p class="text-[10px] text-slate-400">Regulado por el Estado (igual en todas las empresas)</p></div><span class="font-medium">14.20 €</span></div>
+            <div class="flex justify-between items-center p-2 rounded-lg bg-white border border-slate-200 text-slate-600"><div><span class="font-medium">3. Spesa per oneri di sistema</span><p class="text-[10px] text-slate-400">Cargos fijos nacionales fijados por ley</p></div><span class="font-medium">8.90 €</span></div>
+            <div class="flex justify-between items-center p-2 rounded-lg bg-white border border-slate-200 text-slate-600"><div><span class="font-medium">4. Imposte e IVA (10% / 22%)</span><p class="text-[10px] text-slate-400">Impuestos estatales italianos</p></div><span class="font-medium">7.16 €</span></div>
+          </div>
+          <div class="flex justify-between items-center p-3.5 bg-gradient-to-r from-sky-100 to-sky-50 rounded-xl border border-sky-300"><span class="font-black text-slate-900 font-sans text-sm">TOTALE DA PAGARE:</span><span class="text-xl font-black text-sky-800">78.76 €</span></div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 space-y-4">
+        <h3 class="text-xl font-black text-slate-900">Glosario Rápido de la Bolletta</h3>
+        <p class="text-xs text-slate-600">Los 4 términos clave que todo argentino en Italia debe conocer al alquilar o comprar:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div class="p-4 rounded-2xl bg-white border border-sky-200 hover:border-sky-400 transition-all shadow-sm"><span class="font-black text-slate-900 text-sm block mb-1.5">POD</span><p class="text-xs font-bold text-sky-700 mb-1">El DNI de tu luz</p><p class="text-xs text-slate-600 leading-relaxed">Código único que identifica el punto de conexión eléctrica de tu vivienda. Empieza con "IT" y lo necesitás para cualquier trámite.</p></div>
+          <div class="p-4 rounded-2xl bg-white border border-sky-200 hover:border-sky-400 transition-all shadow-sm"><span class="font-black text-slate-900 text-sm block mb-1.5">PDR</span><p class="text-xs font-bold text-sky-700 mb-1">El DNI de tu gas</p><p class="text-xs text-slate-600 leading-relaxed">Es el equivalente al POD pero para el suministro de gas metano. Un código numérico de 14 dígitos.</p></div>
+          <div class="p-4 rounded-2xl bg-white border border-sky-200 hover:border-sky-400 transition-all shadow-sm"><span class="font-black text-slate-900 text-sm block mb-1.5">Oneri di Sistema</span><p class="text-xs font-bold text-sky-700 mb-1">Cargos fijos nacionales</p><p class="text-xs text-slate-600 leading-relaxed">Costos regulados por el Estado italiano, iguales para todos los proveedores. No son negociables.</p></div>
+          <div class="p-4 rounded-2xl bg-white border border-sky-200 hover:border-sky-400 transition-all shadow-sm"><span class="font-black text-slate-900 text-sm block mb-1.5">Mercato Libero</span><p class="text-xs font-bold text-sky-700 mb-1">Mercado libre</p><p class="text-xs text-slate-600 leading-relaxed">El régimen donde vos elegís tu proveedor y tarifa, a diferencia del antiguo "Mercato Tutelato" ya extinguido.</p></div>
+        </div>
+        <div class="p-4 rounded-2xl bg-sky-100/80 border border-sky-300 flex items-center justify-between gap-4 mt-4 shadow-sm">
+          <div><p class="text-xs font-bold text-sky-900">¿Querés que auditemos tu factura actual?</p><p class="text-[11px] text-slate-600">Te decimos exactamente si estás pagando de más en 5 minutos.</p></div>
+          <button onclick="openAuditModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-xs font-bold shrink-0 transition-all cursor-pointer shadow-md">Enviar Factura</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="guide-panel-tramites" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-3xl bg-white border-2 border-sky-200 shadow-md relative">
+        <div class="inline-block p-3 rounded-2xl bg-sky-100 text-sky-700 mb-4"><i data-lucide="receipt" class="w-6 h-6"></i></div>
+        <h3 class="text-lg font-black text-slate-900 mb-2">1. Voltura (Cambio de Titular)</h3>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">El contador <strong>está funcionando</strong> y hay luz o gas en la casa. Solo se transfiere el contrato al nuevo inquilino o propietario.</p>
+        <div class="text-xs bg-sky-50 p-3.5 rounded-xl border border-sky-200 space-y-1.5 font-medium"><p class="text-sky-900 font-bold">¿Qué se necesita?</p><p class="text-slate-600">• Factura del inquilino anterior (o POD/PDR)</p><p class="text-slate-600">• Tu Codice Fiscale y Documento</p><p class="text-slate-600">• Lectura actual del medidor</p></div>
+      </div>
+      <div class="p-6 rounded-3xl bg-white border-2 border-amber-200 shadow-md relative">
+        <div class="inline-block p-3 rounded-2xl bg-amber-100 text-amber-700 mb-4"><i data-lucide="zap" class="w-6 h-6"></i></div>
+        <h3 class="text-lg font-black text-slate-900 mb-2">2. Subentro (Reactivación)</h3>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">El medidor existe físicamente pero el servicio <strong>fue cortado</strong> o dado de baja por el dueño anterior. Requiere reactivación técnica.</p>
+        <div class="text-xs bg-amber-50 p-3.5 rounded-xl border border-amber-200 space-y-1.5 font-medium"><p class="text-amber-900 font-bold">¿Qué se necesita?</p><p class="text-slate-600">• Matrícula / Número de serie del contador</p><p class="text-slate-600">• Tu Codice Fiscale y contrato de alquiler</p><p class="text-slate-600">• Demora aproximada: 5 a 7 días hábiles</p></div>
+      </div>
+      <div class="p-6 rounded-3xl bg-white border-2 border-purple-200 shadow-md relative">
+        <div class="inline-block p-3 rounded-2xl bg-purple-100 text-purple-700 mb-4"><i data-lucide="scale" class="w-6 h-6"></i></div>
+        <h3 class="text-lg font-black text-slate-900 mb-2">3. Cambio de Proveedor (Switch)</h3>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">Estás actualmente con otra empresa italiana (Enel, Eni, A2A, Edison, etc.) y querés pasarte a las tarifas comunitarias de <strong>Argentina Energy</strong>.</p>
+        <div class="text-xs bg-purple-50 p-3.5 rounded-xl border border-purple-200 space-y-1.5 font-medium"><p class="text-purple-900 font-bold">Ventajas:</p><p class="text-slate-600">• 100% Gratuito por ley</p><p class="text-slate-600">• Cero cortes de suministro</p><p class="text-slate-600">• Nos encargamos de dar la baja anterior</p></div>
+      </div>
+    </div>
+
+    <div id="guide-panel-seguridad" class="hidden p-8 rounded-3xl bg-white border-2 border-rose-200 shadow-lg">
+      <div class="flex items-center gap-3 mb-4"><div class="p-3 rounded-2xl bg-rose-100 text-rose-600"><i data-lucide="shield-alert" class="w-6 h-6"></i></div><div><h3 class="text-xl font-black text-slate-900">¡Cuidado con el Telemarketing Agresivo en Italia!</h3><p class="text-xs text-rose-700 font-semibold">Consejos de seguridad de Argentina Energy para compatriotas</p></div></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700 mt-6">
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2"><p class="font-bold text-slate-900 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500"></i>"Le llamamos de ARERA / Su distribuidor va a cortar la luz":</p><p class="text-slate-600">FALSO. ARERA es el ente regulador y NUNCA llama a usuarios individuales por teléfono para vender tarifas. Son call centers que buscan activar contratos con engaños.</p></div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2"><p class="font-bold text-slate-900 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500"></i>Nunca digas la palabra "SÍ" al inicio de una llamada desconocida:</p><p class="text-slate-600">En Italia se han registrado casos donde editan grabaciones de audio ("¿Usted es el titular?" - "Sí") para simular una contratación vocal. Respondé "¿Quién habla?" o "¿De parte de quién?".</p></div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2"><p class="font-bold text-slate-900 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500"></i>No dictes tu código POD o PDR por teléfono:</p><p class="text-slate-600">Con solo el código POD y tu Codice Fiscale, un operador deshonesto puede traspasar tu contrato sin tu firma.</p></div>
+        <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2"><p class="font-bold text-emerald-900 flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i>Con Argentina Energy: Trato transparente y por escrito:</p><p class="text-slate-600">Te enviamos la propuesta por escrito en español, detallando cada costo antes de cualquier confirmación formal.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ SECTION ============ -->
+<section id="faq-section" class="py-16 md:py-24 relative overflow-hidden border-t border-sky-100 bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.93)), url('img/bg-faq.jpg');">
+  <div class="absolute top-1/3 -left-48 w-96 h-96 bg-sky-200/50 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 -right-48 w-96 h-96 bg-amber-100/60 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-100 border border-sky-300 text-sky-800 text-xs font-bold mb-3"><i data-lucide="help-circle" class="w-3.5 h-3.5"></i><span>Centro de Ayuda &amp; Trámites</span></div>
+      <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Todo claro, sin vueltas ni tecnicismos</h2>
+      <p class="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl mx-auto font-medium">Respuestas a tus dudas sobre el mercado energético italiano y la guía definitiva de equivalencias de documentos entre Latina e Italia.</p>
+
+      <div class="mt-8 flex justify-center">
+        <div class="bg-sky-50 p-1.5 rounded-2xl border-2 border-sky-200 inline-flex flex-wrap gap-1 shadow-md">
+          <button id="faq-tab-faq" onclick="setFaqMainTab('faq')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 transition-all cursor-pointer bg-sky-600 text-white shadow-md"><i data-lucide="help-circle" class="w-4 h-4"></i><span>Preguntas Frecuentes</span><span id="faq-count" class="text-[10px] px-2 py-0.5 rounded-full bg-white/20 text-current font-extrabold">9</span></button>
+          <button id="faq-tab-docs" onclick="setFaqMainTab('docs')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 transition-all cursor-pointer relative text-slate-700 hover:text-amber-900 hover:bg-amber-100/60"><span class="text-base"> 🇮🇹</span><span>Equivalencias de Documentos</span><span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-950/20 text-slate-900 font-extrabold">Codice Fiscale, SPID, IBAN</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ TAB -->
+    <div id="faq-panel-faq" class="max-w-4xl mx-auto animate-fadeIn">
+      <div class="flex items-center justify-center flex-wrap gap-2 mb-8">
+        <button onclick="setFaqCategory('todos')" class="faq-cat-btn px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors cursor-pointer border bg-sky-600 text-white border-sky-600 shadow-sm" data-cat="todos">Todas las preguntas</button>
+        <button onclick="setFaqCategory('documentos')" class="faq-cat-btn px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors cursor-pointer border bg-white text-slate-700 border-slate-300 hover:border-sky-300 hover:bg-sky-50" data-cat="documentos"> Trámites &amp; Documentos Argentinos</button>
+        <button onclick="setFaqCategory('tramites')" class="faq-cat-btn px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors cursor-pointer border bg-white text-slate-700 border-slate-300 hover:border-sky-300 hover:bg-sky-50" data-cat="tramites">📋 Voltura &amp; Subentro</button>
+        <button onclick="setFaqCategory('general')" class="faq-cat-btn px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors cursor-pointer border bg-white text-slate-700 border-slate-300 hover:border-sky-300 hover:bg-sky-50" data-cat="general">⚡ Tarifas &amp; Factura</button>
+      </div>
+      <div id="faq-accordion" class="space-y-3"></div>
+    </div>
+
+    <!-- DOCS TAB -->
+    <div id="faq-panel-docs" class="hidden animate-fadeIn space-y-6">
+      <div class="bg-gradient-to-r from-sky-100 via-white to-amber-50 border-2 border-sky-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-600 text-white text-xs font-black shadow-xs"><span> 🇮🇹 Guía Práctica para Argentinos en Italia</span></div>
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900">Equivalencias de Trámites y Documentos Oficiales</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Sabemos que emigrar o mudarse a Italia puede ser confuso con tantos nombres y siglas nuevas. A continuación te explicamos qué significa cada documento italiano, cuál es su equivalente argentino y <strong>para qué sirve exactamente al contratar tus servicios de luz y gas</strong>.</p>
+          </div>
+          <div class="w-full md:w-72 shrink-0">
+            <div class="relative"><i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i><input type="text" id="doc-search" oninput="renderDocs()" placeholder="Buscar: CF, SPID, CUIL, IBAN..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200"></div>
+            <p class="text-[10px] text-slate-500 mt-1.5 text-right font-medium"><span id="doc-count">7</span> documentos disponibles</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="docs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+      <div class="mt-8 bg-white border-2 border-sky-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center gap-3 mb-6"><div class="p-2.5 rounded-xl bg-sky-100 border border-sky-300"><i data-lucide="sparkles" class="w-5 h-5 text-sky-700"></i></div><div><h4 class="text-lg font-black text-slate-900">Resumen Rápido: ¿Qué necesitás para dar de alta la luz y el gas hoy?</h4><p class="text-xs text-slate-500">No te compliques: con solo estos 3 datos ya podés empezar a ahorrar.</p></div></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-sky-50/70 border border-sky-200"><div class="text-2xl mb-2">📄</div><h5 class="font-bold text-slate-900 text-xs sm:text-sm">1. Última Factura o Código POD/PDR</h5><p class="text-[11px] text-slate-600 mt-1">La factura del inquilino anterior o la tuya actual. Si el medidor está apagado, basta el número de serie o foto del medidor.</p></div>
+          <div class="p-4 rounded-2xl bg-sky-50/70 border border-sky-200"><div class="text-2xl mb-2">🆔</div><h5 class="font-bold text-slate-900 text-xs sm:text-sm">2. Codice Fiscale + Pasaporte o CIE</h5><p class="text-[11px] text-slate-600 mt-1">Tu número de Codice Fiscale (incluso si es provisorio en papel) y foto de tu pasaporte argentino vigente o DNI/CIE.</p></div>
+          <div class="p-4 rounded-2xl bg-sky-50/70 border border-sky-200"><div class="text-2xl mb-2">💳</div><h5 class="font-bold text-slate-900 text-xs sm:text-sm">3. Código IBAN (Opcional pero recomendado)</h5><p class="text-[11px] text-slate-600 mt-1">Para activar el débito bancario y no pagar entre 50€ y 150€ de depósito de garantía. Sirve Revolut, N26, Postepay o bancos tradicionales.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-sky-100 via-white to-amber-50 border-2 border-sky-200 text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+      <div class="text-left space-y-1">
+        <div class="flex items-center gap-2"><span class="text-base"></span><h4 class="text-base sm:text-lg font-black text-slate-900">¿Tenés dudas sobre algún trámite o factura en Italia?</h4></div>
+        <p class="text-xs text-slate-600 max-w-xl font-medium">Nuestro equipo en Cuneo (Piamonte) te responde 100% en español. Escribinos o envianos una foto de tus papeles y te guiamos paso a paso.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto shrink-0">
+        <button onclick="openWhatsApp('Hola Argentina Energy, tengo una pregunta sobre las tarifas y documentos de luz y gas en Italia.')" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer"><i data-lucide="message-circle" class="w-4 h-4"></i><span>Hablar por WhatsApp</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="py-16 md:py-24 border-t border-sky-100 relative bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.93)), url('img/bg-testim.jpg');">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold mb-3"><i data-lucide="quote" class="w-3.5 h-3.5"></i><span>Testimonios Reales</span></div>
+      <h2 class="text-3xl sm:text-4xl font-black text-slate-900">Compatriotas que ya ahorran con nosotros</h2>
+      <p class="text-sm sm:text-base text-slate-600 mt-2">De norte a sur en Italia, cada vez somos más los que elegimos energía transparente en nuestro idioma.</p>
+    </div>
+    <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT SECTION ============ -->
+<section id="contacto-section" class="py-16 md:py-24 relative bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(240,249,255,0.94), rgba(255,255,255,0.92)), url('img/bg-contact.jpg');">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 border border-sky-300 text-sky-800 text-xs font-bold uppercase tracking-wider mb-3"><i data-lucide="mail" class="w-3.5 h-3.5"></i><span>Atención Personalizada</span></div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900">Responderemos a todas tus preguntas</h2>
+      <p class="text-lg text-sky-700 font-bold mt-2">Contáctanos sin compromiso</p>
+      <p class="text-sm text-slate-600 mt-2">Completá el formulario o escribinos directo por WhatsApp. Un compatriota te asesorará paso a paso.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-7 bg-white border-2 border-sky-200 rounded-3xl p-6 sm:p-9 shadow-xl">
+        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div><label class="text-xs font-bold text-slate-700 block mb-1">Nombre: <span class="text-amber-500">*</span></label><input type="text" id="c-nombre" required placeholder="Tu nombre" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white"></div>
+            <div><label class="text-xs font-bold text-slate-700 block mb-1">Apellido: <span class="text-amber-500">*</span></label><input type="text" id="c-apellido" required placeholder="Tu apellido" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white"></div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div><label class="text-xs font-bold text-slate-700 block mb-1">Correo electrónico: <span class="text-amber-500">*</span></label><input type="email" id="c-email" required placeholder="ejemplo@correo.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white"></div>
+            <div><label class="text-xs font-bold text-slate-700 block mb-1">Teléfono / WhatsApp: <span class="text-amber-500">*</span></label><input type="tel" id="c-telefono" required placeholder="+39 345 0000000" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white"></div>
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1.5">Servicio de Interés:</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="contact-service-group">
+              <button type="button" onclick="setContactService('luz')" data-service="luz" class="contact-service-btn py-2 px-2 rounded-xl border-2 text-xs font-bold transition-all cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-300">⚡ Solo Luz</button>
+              <button type="button" onclick="setContactService('gas')" data-service="gas" class="contact-service-btn py-2 px-2 rounded-xl border-2 text-xs font-bold transition-all cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-300">🔥 Solo Gas</button>
+              <button type="button" onclick="setContactService('ambos')" data-service="ambos" class="contact-service-btn py-2 px-2 rounded-xl border-2 text-xs font-bold transition-all cursor-pointer bg-sky-100 border-sky-500 text-sky-900 shadow-sm">⚡🔥 Luz + Gas</button>
+              <button type="button" onclick="setContactService('empresa')" data-service="empresa" class="contact-service-btn py-2 px-2 rounded-xl border-2 text-xs font-bold transition-all cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-300">🏢 Empresa / IVA</button>
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">Adjuntar factura actual (Opcional para análisis express):</label>
+            <div class="flex items-center gap-3">
+              <label class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-50 border-2 border-dashed border-sky-300 hover:border-sky-500 text-slate-700 text-xs font-bold cursor-pointer transition-all">
+                <i data-lucide="upload" class="w-4 h-4 text-sky-600"></i><span id="c-filename">Seleccionar PDF o Foto...</span>
+                <input type="file" accept=".pdf,image/*" onchange="handleContactFile(event)" class="hidden">
+              </label>
+              <button type="button" id="c-file-remove" onclick="removeContactFile()" class="hidden text-xs text-red-600 hover:underline font-bold">Quitar</button>
+            </div>
+          </div>
+          <div><label class="text-xs font-bold text-slate-700 block mb-1">Mensaje:</label><textarea id="c-mensaje" rows="4" placeholder="Contanos tu situación: ¿te mudaste recientemente?, ¿querés bajar el costo de tu factura actual?, ¿necesitas hacer una voltura?..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white"></textarea></div>
+          <div class="pt-3 flex flex-col sm:flex-row gap-3">
+            <button type="submit" id="c-submit-btn" class="flex-1 py-3 px-6 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-black text-sm flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer"><i data-lucide="send" class="w-4 h-4"></i><span>Enviar Mensaje</span></button>
+            <button type="button" onclick="sendContactWhatsApp()" class="py-3 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer"><i data-lucide="message-circle" class="w-4 h-4"></i><span>Enviar por WhatsApp</span></button>
+          </div>
+          <p class="text-[10px] text-slate-500 text-center pt-2">🔒 Tus datos están protegidos y nunca serán cedidos a terceros con fines de spam comercial.</p>
+        </form>
+        <div id="contact-success" class="hidden text-center py-10 space-y-4">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-600 flex items-center justify-center mx-auto"><i data-lucide="check-circle-2" class="w-9 h-9"></i></div>
+          <h3 class="text-2xl font-black text-slate-900">¡Mensaje Enviado con Éxito!</h3>
+          <p id="contact-success-msg" class="text-sm text-slate-600 max-w-md mx-auto"></p>
+          <div class="pt-4"><button onclick="resetContactForm()" class="px-6 py-2.5 rounded-xl bg-sky-100 hover:bg-sky-200 text-sky-800 font-bold text-xs transition-all cursor-pointer">Enviar otra consulta</button></div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 space-y-6">
+        <div class="bg-gradient-to-br from-white via-sky-50 to-sky-100/50 border-2 border-sky-200 rounded-3xl p-7 shadow-lg">
+          <div class="flex items-center gap-3 pb-5 border-b border-sky-200"><div class="w-12 h-12 rounded-2xl bg-sky-100 border border-sky-300 flex items-center justify-center text-sky-700"><i data-lucide="building-2" class="w-6 h-6"></i></div><div><h3 class="text-lg font-black text-slate-900">Argentina Energy</h3><p class="text-xs text-sky-700 font-bold">Un proyecto de FraStel Corporation Group</p></div></div>
+          <div class="space-y-4 mt-6 text-xs sm:text-sm">
+            <div class="flex items-start gap-3 text-slate-700"><i data-lucide="map-pin" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i><div><strong class="text-slate-900 block font-bold">Sede Operativa:</strong><span>Via Bartolomeo Bruni 7, 12100 Cuneo (CN), Italia</span></div></div>
+            <div class="flex items-start gap-3 text-slate-700"><i data-lucide="phone" class="w-5 h-5 text-sky-600 shrink-0 mt-0.5"></i><div><strong class="text-slate-900 block font-bold">Teléfono Fijo:</strong><a href="tel:+3901721860282" class="hover:text-sky-600 transition-colors font-mono font-bold">+39 0172 1860282</a></div></div>
+            <div class="flex items-start gap-3 text-slate-700"><i data-lucide="message-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><div><strong class="text-slate-900 block font-bold">Mobile &amp; WhatsApp:</strong><a href="tel:+393933192262" class="hover:text-emerald-600 transition-colors font-mono font-bold text-emerald-700">+39 393 3192262</a></div></div>
+            <div class="flex items-start gap-3 text-slate-700"><i data-lucide="mail" class="w-5 h-5 text-sky-600 shrink-0 mt-0.5"></i><div><strong class="text-slate-900 block font-bold">Correo Electrónico:</strong><a href="mailto:info@argentinaenergy.it" class="hover:text-sky-600 transition-colors font-mono text-sm text-sky-700 font-bold">info@argentinaenergy.it</a></div></div>
+            <div class="flex items-start gap-3 text-slate-700"><i data-lucide="clock" class="w-5 h-5 text-purple-600 shrink-0 mt-0.5"></i><div><strong class="text-slate-900 block font-bold">Horario de Atención:</strong><span>Lunes a Viernes 9:00–18:00 (hora Italia)</span></div></div>
+          </div>
+          <div class="mt-6 pt-5 border-t border-sky-200 flex flex-col gap-4">
+            <a href="tel:+3901721860282" class="w-full py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"><i data-lucide="phone" class="w-4 h-4 text-white"></i><span>Llamar a Cuneo: +39 0172 1860282</span></a>
+            <div class="pt-2 border-t border-sky-100">
+              <div class="flex items-center justify-between mb-2.5"><p class="text-[11px] font-bold text-slate-800 uppercase tracking-wider">Canales y Redes Sociales:</p><span class="text-[10px] text-sky-600 font-semibold">100% en Español </span></div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <a href="#" onclick="return false;" class="px-2.5 py-2 rounded-xl bg-[#1877F2] text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:opacity-90 transition-all hover:scale-105"><i data-lucide="facebook" class="w-3.5 h-3.5"></i><span>Facebook</span></a>
+                <a href="#" onclick="return false;" class="px-2.5 py-2 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:opacity-90 transition-all hover:scale-105"><i data-lucide="instagram" class="w-3.5 h-3.5"></i><span>Instagram</span></a>
+                <a href="#" onclick="openWhatsApp(); return false;" class="px-2.5 py-2 rounded-xl bg-[#25D366] text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:opacity-90 transition-all hover:scale-105"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i><span>WhatsApp</span></a>
+                <a href="#" onclick="return false;" class="px-2.5 py-2 rounded-xl bg-[#229ED9] text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:opacity-90 transition-all hover:scale-105"><i data-lucide="send" class="w-3.5 h-3.5"></i><span>Telegram</span></a>
+                <a href="#" onclick="return false;" class="px-2.5 py-2 rounded-xl bg-black text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:opacity-90 transition-all hover:scale-105"><i data-lucide="music-2" class="w-3.5 h-3.5"></i><span>TikTok</span></a>
+                <a href="#" onclick="return false;" class="px-2.5 py-2 rounded-xl bg-[#FF0000] text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:opacity-90 transition-all hover:scale-105"><i data-lucide="youtube" class="w-3.5 h-3.5"></i><span>YouTube</span></a>
+                <a href="#" onclick="return false;" class="px-2.5 py-2 rounded-xl bg-[#0077B5] text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:opacity-90 transition-all hover:scale-105"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i><span>LinkedIn</span></a>
+                <a href="#" onclick="return false;" class="px-2.5 py-2 rounded-xl bg-neutral-900 text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:opacity-90 transition-all hover:scale-105"><i data-lucide="twitter" class="w-3.5 h-3.5"></i><span>X</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-sky-200 text-xs text-slate-600 space-y-2 shadow-xs">
+          <p class="font-bold text-slate-900">📍 Cuneo (Piemonte) y Cobertura Nacional</p>
+          <p>Nuestra sede se encuentra en la provincia de Cúneo (Piemonte), pero brindamos cobertura, asesoría y trámites energéticos en toda Italia (Milano, Roma, Torino, Bologna, Firenze, Napoli, Palermo y más).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="text-sky-100 text-xs pt-14 pb-10 border-t-4 border-sky-400 bg-cover bg-center" style="background-image: linear-gradient(rgba(12,74,110,0.94), rgba(8,47,73,0.96)), url('img/bg-footer.jpg');">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-white px-5 py-3 rounded-2xl shadow-md inline-flex items-center">
+            <img src="logo argentina.png" alt="Argentina Energy" class="h-16 sm:h-20 w-auto max-w-[280px] object-contain">
+          </div>
+        </div>
+        <p class="text-sky-100 leading-relaxed text-xs max-w-sm">Ayudamos a la comunidad argentina residente en Italia a acceder a servicios de luz y gas confiables, a precios justos y con asesoramiento 100% en español.</p>
+        <div class="p-3.5 rounded-xl bg-sky-950/60 border border-sky-700 text-xs text-sky-100"><p class="font-bold text-amber-300"> 🇮🇹 Más somos, más baratos seremos.</p><p class="text-[11px] text-sky-200 mt-0.5">Poder de compra grupal y tarifas transparentes.</p></div>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white uppercase text-xs tracking-wider mb-4 border-b border-sky-700 pb-2">Navegación</h4>
+        <ul class="space-y-2 text-xs font-medium">
+          <li><button onclick="scrollToId('hero')" class="hover:text-amber-300 transition-colors cursor-pointer text-sky-100">Home</button></li>
+          <li><button onclick="scrollToId('luz-section')" class="hover:text-amber-300 transition-colors cursor-pointer text-sky-100">Ofertas Luz</button></li>
+          <li><button onclick="scrollToId('gas-section')" class="hover:text-amber-300 transition-colors cursor-pointer text-sky-100">Ofertas Gas</button></li>
+          <li><button onclick="scrollToId('calculadora-section')" class="hover:text-amber-300 transition-colors cursor-pointer text-sky-100">Simulador de Ahorro</button></li>
+          <li><button onclick="scrollToId('guia-section')" class="hover:text-amber-300 transition-colors cursor-pointer text-sky-100">Guía Bolletta Italiana</button></li>
+          <li><button onclick="scrollToId('faq-section')" class="hover:text-amber-300 transition-colors cursor-pointer text-amber-300 font-bold flex items-center gap-1"><span> Doc. Argentina vs Italia</span></button></li>
+          <li><button onclick="scrollToId('faq-section')" class="hover:text-amber-300 transition-colors cursor-pointer text-sky-100">Preguntas Frecuentes</button></li>
+          <li><button onclick="scrollToId('contacto-section')" class="hover:text-amber-300 transition-colors cursor-pointer text-sky-100">Contáctanos</button></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white uppercase text-xs tracking-wider mb-4 border-b border-sky-700 pb-2">Servicios</h4>
+        <ul class="space-y-2 text-xs font-medium">
+          <li><button onclick="scrollToId('luz-section')" class="hover:text-amber-300 text-left text-sky-100 cursor-pointer">⚡ Energía Eléctrica Doméstica</button></li>
+          <li><button onclick="scrollToId('gas-section')" class="hover:text-amber-300 text-left text-sky-100 cursor-pointer">🔥 Gas Metano Doméstico</button></li>
+          <li><button onclick="scrollToId('calculadora-section')" class="hover:text-amber-300 text-left text-sky-100 cursor-pointer">⚡🔥 Pack Dual Luz + Gas</button></li>
+          <li><button onclick="scrollToId('luz-section')" class="hover:text-amber-300 text-left text-sky-100 cursor-pointer">🏢 Negocios y Partita IVA</button></li>
+          <li><button onclick="openAuditModal()" class="hover:text-amber-300 text-left font-bold text-amber-300 cursor-pointer">📄 Auditoría Gratuita de Factura</button></li>
+          <li><button onclick="scrollToId('guia-section')" class="hover:text-amber-300 text-left text-sky-100 cursor-pointer">📋 Gestión de Voltura &amp; Subentro</button></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white uppercase text-xs tracking-wider mb-4 border-b border-sky-700 pb-2">Contacto</h4>
+        <div class="space-y-2.5 text-xs">
+          <p class="text-sky-100"><strong class="text-white block font-bold">Sede:</strong>Via Bartolomeo Bruni 7, 12100 Cuneo (CN), Italia</p>
+          <p><strong class="text-white block font-bold">Teléfono:</strong><a href="tel:+3901721860282" class="hover:text-amber-300 font-mono text-sky-200">+39 0172 1860282</a></p>
+          <p><strong class="text-white block font-bold">WhatsApp:</strong><a href="https://wa.me/393933192262" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-300 font-mono text-emerald-300">+39 393 3192262</a></p>
+          <p><strong class="text-white block font-bold">Email:</strong><a href="mailto:info@argentinaenergy.it" class="hover:text-amber-300 block break-all font-mono text-amber-200">info@argentinaenergy.it</a></p>
+          <p class="text-[11px] text-sky-300">Horario: Lunes a Viernes 9:00–18:00 (hora Italia)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-sky-800 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <p class="text-sky-200 text-xs">© 2026 <strong class="text-white">Argentina Energy</strong> es un proyecto de <strong class="text-amber-300">FraStel Corporation Group</strong>. <button onclick="openLegalModal('privacy')" class="text-sky-300 hover:text-white underline mx-1 cursor-pointer font-medium">Privacy Policy</button> &amp; <button onclick="openLegalModal('cookies')" class="text-amber-300 hover:text-white underline mx-1 cursor-pointer font-medium">Cookie Policy</button> | <button onclick="openLegalModal('terms')" class="text-sky-300 hover:text-white underline mx-1 cursor-pointer">Términos de Servicio</button></p>
+      <div class="flex items-center gap-2 text-xs text-sky-200"><span>Diseñado con</span><i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400 fill-rose-400"></i><span>para la comunidad argentina en Italia</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
+  <div id="wa-tooltip" class="hidden relative bg-white border-2 border-emerald-300 text-slate-800 p-3 rounded-2xl shadow-xl max-w-xs text-xs animate-bounce-short">
+    <button onclick="document.getElementById('wa-tooltip').classList.add('hidden')" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-slate-700 border border-slate-300 shadow-xs cursor-pointer"><i data-lucide="x" class="w-3 h-3"></i></button>
+    <p class="font-black text-emerald-700 flex items-center gap-1.5"><span></span> ¿Tenés dudas con tu factura?</p>
+    <p class="text-slate-600 mt-1 text-[11px] font-medium">Escribinos por WhatsApp y te asesoramos en español ahora mismo.</p>
+  </div>
+  <button onclick="openWhatsApp()" class="group relative flex items-center gap-2.5 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl transition-all transform hover:scale-105 cursor-pointer" aria-label="Contactar por WhatsApp">
+    <i data-lucide="message-circle" class="w-6 h-6"></i>
+    <span class="hidden sm:inline text-xs font-extrabold tracking-wide">WhatsApp en Español</span>
+    <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-500 border-2 border-white"></span></span>
+  </button>
+</div>
+
+<!-- ============ BILL AUDIT MODAL ============ -->
+<div id="audit-modal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn">
+  <div class="relative w-full max-w-xl bg-white border-2 border-sky-200 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
+    <button onclick="closeAuditModal()" class="absolute top-5 right-5 p-2 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-all cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
+
+    <div id="audit-form-view">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="p-3 rounded-2xl bg-sky-100 border border-sky-300 text-sky-700"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+        <div><h3 class="text-xl font-black text-slate-900">Auditoría Gratuita de tu Factura</h3><p class="text-xs text-slate-600">Te decimos en 24hs si estás pagando sobreprecio en Italia</p></div>
+      </div>
+      <form onsubmit="handleAuditSubmit(event)" class="space-y-4 mt-6">
+        <div class="border-2 border-dashed border-sky-300 hover:border-sky-500 rounded-2xl p-6 text-center bg-sky-50/50 transition-all cursor-pointer relative">
+          <input type="file" accept="image/*,.pdf" onchange="handleAuditFile(event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+          <i data-lucide="upload-cloud" class="w-8 h-8 text-sky-600 mx-auto mb-2"></i>
+          <div id="audit-file-empty"><p class="text-xs font-bold text-slate-800">Arrastrá o seleccioná una foto o PDF de tu bolletta</p><p class="text-[11px] text-slate-500 mt-1">Formatos soportados: PDF, JPG, PNG (máx 15MB)</p></div>
+          <div id="audit-file-selected" class="hidden items-center justify-center gap-2 text-xs font-bold text-emerald-700"><i data-lucide="file-text" class="w-4 h-4"></i><span id="audit-filename"></span></div>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-slate-700 block mb-1.5">¿De qué servicio es la factura?</label>
+          <div class="grid grid-cols-3 gap-2 text-xs" id="audit-service-group">
+            <button type="button" onclick="setAuditService('luz')" data-service="luz" class="audit-service-btn py-2 px-3 rounded-xl border-2 text-center transition-all cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-200">Solo Luz</button>
+            <button type="button" onclick="setAuditService('gas')" data-service="gas" class="audit-service-btn py-2 px-3 rounded-xl border-2 text-center transition-all cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-200">Solo Gas</button>
+            <button type="button" onclick="setAuditService('luz_gas')" data-service="luz_gas" class="audit-service-btn py-2 px-3 rounded-xl border-2 text-center transition-all cursor-pointer bg-sky-100 border-sky-500 text-sky-900 font-black">Luz + Gas</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div><label class="text-xs font-bold text-slate-700 block mb-1">Tu Nombre y Apellido *</label><input type="text" id="audit-name" required placeholder="Ej. Juan Pérez" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white"></div>
+          <div><label class="text-xs font-bold text-slate-700 block mb-1">WhatsApp / Teléfono *</label><input type="tel" id="audit-phone" required placeholder="Ej. +39 345 1234567" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white"></div>
+        </div>
+        <div><label class="text-xs font-bold text-slate-700 block mb-1">Correo Electrónico *</label><input type="email" id="audit-email" required placeholder="tuemail@ejemplo.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white"></div>
+
+        <div class="pt-2"><button type="submit" id="audit-submit-btn" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer"><span>Solicitar Análisis Gratuito</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button></div>
+
+        <div class="relative flex items-center justify-center my-3"><div class="border-t border-slate-200 w-full"></div><span class="bg-white px-3 text-[10px] uppercase font-bold text-slate-500">o por WhatsApp</span><div class="border-t border-slate-200 w-full"></div></div>
+        <button type="button" onclick="auditWhatsAppSend()" class="w-full py-2.5 px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center gap-2 border border-emerald-300 transition-all cursor-pointer"><i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i><span>Enviar foto directo por WhatsApp (+39 393 3192262)</span></button>
+        <p class="text-[10px] text-center text-slate-500">🔒 Tus datos están protegidos conforme al RGPD europeo y solo se utilizan para la comparación tarifaria.</p>
+      </form>
+    </div>
+
+    <div id="audit-success-view" class="hidden text-center py-6 space-y-4">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-600 flex items-center justify-center mx-auto"><i data-lucide="check-circle-2" class="w-9 h-9"></i></div>
+      <h3 class="text-2xl font-black text-slate-900">¡Factura Recibida con Éxito!</h3>
+      <p class="text-sm text-slate-600 max-w-md mx-auto">Muchas gracias, <strong id="audit-success-name" class="text-sky-700">compatriota</strong>. Nuestro equipo de asesores en Cuneo está revisando tus cargos de luz y gas.</p>
+      <div class="p-4 rounded-2xl bg-sky-50 border border-sky-200 text-xs text-left space-y-2 max-w-md mx-auto font-medium">
+        <p class="text-sky-900 font-bold flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4"></i><span>Próximos pasos:</span></p>
+        <p class="text-slate-600">1. Analizaremos tu precio por kWh / Smc y cargos fijos.</p>
+        <p class="text-slate-600">2. Te enviaremos por WhatsApp/Email un comparativo exacto de tu ahorro.</p>
+        <p class="text-slate-600">3. Si decidís cambiarte, lo hacemos 100% online y sin costo.</p>
+      </div>
+      <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+        <button onclick="auditWhatsAppSend()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg"><i data-lucide="message-circle" class="w-4 h-4"></i><span>Escribirnos ahora al WhatsApp</span></button>
+        <button onclick="closeAuditModal()" class="px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs cursor-pointer">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LEGAL MODAL ============ -->
+<div id="legal-modal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn">
+  <div class="relative w-full max-w-2xl bg-white border-2 border-sky-200 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[85vh] text-slate-700 text-xs sm:text-sm space-y-4">
+    <button onclick="closeLegalModal()" class="absolute top-5 right-5 p-2 rounded-full bg-slate-100 text-slate-400 hover:text-slate-900 hover:bg-slate-200 transition-all cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div id="legal-content"></div>
+    <div class="pt-4 border-t border-slate-200 text-right"><button onclick="closeLegalModal()" class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition-all cursor-pointer shadow-sm">Entendido</button></div>
+  </div>
+</div>
+
+<style>
+  .nav-link { padding: 0.375rem 0.625rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 600; color: rgb(51 65 85); transition: all .15s; cursor: pointer; display:flex; align-items:center; gap:0.375rem; }
+  .nav-link:hover { color: rgb(2 132 199); background: rgb(240 249 255); }
+  .mobile-link { display:block; width:100%; text-align:left; padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 600; color: rgb(51 65 85); cursor:pointer; }
+  .mobile-link:hover { color: rgb(2 132 199); background: rgb(240 249 255); }
+</style>
+
+<script>
+const COMPANY = {
+  whatsapp: '393933192262',
+  phone: '+39 0172 1860282',
+};
+
+// ---------- Data ----------
+const GLOSSARY_TERMS = []; // rendered statically in HTML
+
+const FAQ_LIST = [
+  { category: 'documentos', question: '¿Necesito el Codice Fiscale para activar la luz o el gas?', answer: 'Sí, es obligatorio. El Codice Fiscale es el equivalente al CUIL/CUIT argentino y es el dato que todas las compañías energéticas italianas piden para identificarte legalmente. Se tramita gratis en la Agenzia delle Entrate o, si estás recién llegado, en el consulado argentino puede orientarte sobre cómo pedirlo.' },
+  { category: 'documentos', question: '¿Qué pasa si todavía no tengo Permesso di Soggiorno?', answer: 'Podés igual activar un contrato si contás con el recibo (ricevuta) de la solicitud del permiso, sumado a tu Codice Fiscale y pasaporte vigente. No hace falta esperar la tarjeta física para empezar el trámite de luz y gas.' },
+  { category: 'documentos', question: '¿SPID es obligatorio para contratar con ustedes?', answer: 'No. SPID es útil para trámites con la administración pública italiana (similar a la Clave Fiscal de AFIP), pero para contratar luz y gas con Argentina Energy solo necesitamos tu Codice Fiscale, documento y datos de contacto.' },
+  { category: 'tramites', question: '¿Cuál es la diferencia entre Voltura y Subentro?', answer: 'La Voltura es cuando el contador ya está activo y solo cambia el titular del contrato (por ejemplo, alquilaste una casa donde ya había luz). El Subentro es cuando el servicio fue cortado por el inquilino anterior y hay que reactivarlo técnicamente, lo cual lleva unos días más.' },
+  { category: 'tramites', question: '¿Cuánto tarda un cambio de proveedor (switch)?', answer: 'El cambio de proveedor manteniendo el mismo punto de suministro (POD/PDR) suele demorar entre 10 y 15 días hábiles, sin ningún corte de servicio durante el proceso.' },
+  { category: 'tramites', question: '¿Tiene costo hacer la Voltura o el Subentro con ustedes?', answer: 'No, la gestión de Voltura y Subentro con Argentina Energy no tiene costo de gestión. Solo se aplican, si corresponde, los cargos técnicos regulados que cobra el distribuidor local por la reactivación física del medidor.' },
+  { category: 'general', question: '¿Por qué mi factura italiana es tan alta comparada con lo que esperaba?', answer: 'La factura combina un costo de energía (lo único negociable), costos de transporte y gestión del contador, cargos de sistema fijados por el Estado, e impuestos (IVA del 10% o 22% según el consumo). Nosotros solo podemos optimizar la parte de energía, pero ahí está la mayor diferencia entre proveedores.' },
+  { category: 'general', question: '¿Qué conviene, tarifa fija o indexada?', answer: 'La tarifa fija te conviene si preferís previsibilidad total y no querés sorpresas mes a mes. La indexada (PUN o PSV) puede ser más barata en meses de mercado bajo, pero varía. Te ayudamos a elegir según tu consumo real.' },
+  { category: 'general', question: '¿Se corta el servicio mientras hago el cambio de proveedor?', answer: 'No. Por ley italiana, el cambio de proveedor manteniendo el mismo punto de suministro (switch) nunca implica un corte de luz o gas. La transición es 100% técnica y administrativa, invisible para vos.' },
+];
+
+const DOC_EQUIVALENCES = [
+  { id: 'cf', iconName: 'FileText', italianDoc: 'Codice Fiscale', italianAcronym: 'CF', argentinoEquivalent: 'CUIL / CUIT', tag: 'Imprescindible', description: 'Código alfanumérico único que identifica a cada persona ante el Estado italiano para cualquier trámite administrativo, fiscal o contractual.', energyUtilityRole: 'Es el dato obligatorio número uno para activar cualquier contrato de luz o gas. Sin Codice Fiscale no se puede firmar ningún contrato de suministro.', howToGetInItaly: 'Se solicita gratis en cualquier oficina de la Agenzia delle Entrate presentando el pasaporte. Se obtiene en el momento en formato papel.', proTip: 'Sacalo apenas llegás, incluso antes de tener domicilio fijo: muchas gestiones (SIM, alquiler, banco) también lo piden.' },
+  { id: 'residenza', iconName: 'Home', italianDoc: 'Certificato di Residenza', italianAcronym: '—', argentinoEquivalent: 'Certificado de Domicilio', tag: 'Domicilio', description: 'Documento emitido por el Comune que certifica que vivís de forma estable en una dirección determinada dentro de esa ciudad.', energyUtilityRole: 'No siempre es obligatorio para activar el servicio, pero ayuda a confirmar la dirección exacta de suministro y acelera la Voltura.', howToGetInItaly: 'Se tramita en la Anagrafe del Comune donde vivís, luego de registrar tu domicilio (dichiarazione di residenza).', proTip: 'Si todavía no hiciste el cambio de residencia (iscrizione anagrafica), podés activar igual el servicio con el contrato de alquiler como respaldo.' },
+  { id: 'spid', iconName: 'Key', italianDoc: 'SPID', italianAcronym: 'SPID', argentinoEquivalent: 'Clave Fiscal / Mi Argentina', tag: 'Digital', description: 'Identidad digital única para acceder a todos los servicios públicos italianos online (fisco, salud, INPS, municipios).', energyUtilityRole: 'Algunos proveedores lo piden para gestionar tu cuenta online, pero con Argentina Energy no es necesario: nosotros hacemos la gestión por vos.', howToGetInItaly: 'Se obtiene a través de proveedores certificados (Poste Italiane, Aruba, TIM, etc.) con reconocimiento facial o presencial.', proTip: 'No es urgente al llegar; podés dejarlo para más adelante si te genera complicación.' },
+  { id: 'iban', iconName: 'CreditCard', italianDoc: 'IBAN', italianAcronym: 'IBAN', argentinoEquivalent: 'CBU', tag: 'Bancario', description: 'Código internacional que identifica tu cuenta bancaria para pagos y débitos automáticos en Italia y toda la Unión Europea.', energyUtilityRole: 'Permite activar el débito automático (addebito diretto) para pagar la factura, evitando el depósito de garantía de 50€-150€ que piden sin domiciliación.', howToGetInItaly: 'Lo entrega tu banco o billetera digital (Revolut, N26, Postepay, bancos tradicionales) al abrir la cuenta.', proTip: 'Revolut o N26 se abren 100% online en minutos y son aceptados sin problema por las compañías de energía.' },
+  { id: 'permesso', iconName: 'Briefcase', italianDoc: 'Permesso di Soggiorno', italianAcronym: 'PDS', argentinoEquivalent: 'Residencia Permanente/Temporaria', tag: 'Migratorio', description: 'Autorización que permite a un ciudadano no europeo residir legalmente en Italia por un período determinado.', energyUtilityRole: 'No es un requisito estricto de las compañías de energía; alcanza con el recibo de solicitud (ricevuta) más el Codice Fiscale y pasaporte.', howToGetInItaly: 'Se solicita en la Questura o mediante el kit postale de Correos, tras la cita en el Comune correspondiente.', proTip: 'Guardá siempre la ricevuta amarilla: sirve como comprobante válido para casi todos los trámites mientras esperás la tarjeta física.' },
+  { id: 'tessera', iconName: 'ShieldCheck', italianDoc: 'Tessera Sanitaria', italianAcronym: 'TS', argentinoEquivalent: 'Credencial de Obra Social / PAMI', tag: 'Salud', description: 'Tarjeta que da acceso al Servizio Sanitario Nazionale (sistema de salud público) y funciona también como Codice Fiscale físico.', energyUtilityRole: 'No es necesaria para contratar luz o gas, pero al tener el Codice Fiscale impreso, muchas personas la usan como comprobante rápido de ese dato.', howToGetInItaly: 'Se emite automáticamente al inscribirte en el Servizio Sanitario Nazionale a través de la ASL de tu zona.', proTip: 'Llega por correo unas semanas después de la inscripción; mientras tanto usá la constancia de Codice Fiscale en papel.' },
+  { id: 'pec', iconName: 'Smartphone', italianDoc: 'PEC (Posta Elettronica Certificata)', italianAcronym: 'PEC', argentinoEquivalent: 'Email verificado ante AFIP/Correo', tag: 'Comunicación', description: 'Correo electrónico certificado con valor legal, usado para comunicaciones oficiales con la administración pública y empresas.', energyUtilityRole: 'Sirve para recibir confirmaciones formales de rescisión del contrato anterior o reclamos, aunque Argentina Energy gestiona esto por vos en la mayoría de los casos.', howToGetInItaly: 'Se contrata con proveedores como Aruba o Poste Italiane; algunos planes son gratuitos por el primer año.', proTip: 'No es prioritario al llegar; podés resolverlo más adelante si algún trámite puntual lo requiere.' },
+  { id: 'doble', iconName: 'ShieldCheck', italianDoc: 'Doppia Cittadinanza / Passaporto Italiano', italianAcronym: 'ITA-ARG', argentinoEquivalent: 'DNI Argentino + Ciudadanía italiana (oriundi)', tag: 'Oriundi', description: 'Muchos argentinos en Italia tienen doble ciudadanía por descendencia. Con pasaporte italiano los trámites de luz y gas son aún más rápidos: no necesitás Permesso di Soggiorno.', energyUtilityRole: 'Con documento italiano + Codice Fiscale podés firmar el contrato directamente y activar la domiciliación bancaria sin depósito de garantía. Argentina Energy verifica gratis tu caso.', howToGetInItaly: 'Si ya tenés la ciudadanía reconocida, presentá pasaporte o carta d\u2019identità italiana. Si estás en trámite, alcanza pasaporte argentino + ricevuta + Codice Fiscale.', proTip: 'Traé tu partida de nacimiento argentina apostillada y traducida: acelera residenza, tessera sanitaria y contratos de energía.' }
+];
+const TESTIMONIALS = [
+  { id: 1, avatar: 'img/avatars/avatar1.svg', name: 'María Fernández', city: 'Milano', origin: 'Buenos Aires, Argentina', rating: 5, comment: 'Vine a Italia hace un año y no entendía nada de la bolletta. Me explicaron todo en criollo y terminé pagando 35€ menos por mes en luz y gas.', service: 'Luz + Gas', savings: '-35€/mes' },
+  { id: 2, avatar: 'img/avatars/avatar2.svg', name: 'Diego Suárez', city: 'Torino', origin: 'Córdoba, Argentina', rating: 5, comment: 'Tuve que hacer un Subentro porque el departamento había quedado sin gas. Ellos se encargaron de todo y en una semana ya tenía calefacción.', service: 'Gas', savings: '-28€/mes' },
+  { id: 3, avatar: 'img/avatars/avatar3.svg', name: 'Lucía Giménez', city: 'Roma', origin: 'Rosario, Argentina', rating: 5, comment: 'Tengo un local de comidas y el ahorro en la factura de luz fue mucho más de lo que esperaba. Además me explicaron cómo deducir el IVA.', service: 'Empresa', savings: '-180€/mes' },
+  { id: 4, avatar: 'img/avatars/avatar4.svg', name: 'Martín Álvarez', city: 'Bologna', origin: 'Mendoza, Argentina', rating: 4, comment: 'Lo que más valoro es que respondan por WhatsApp en español. Cambié de proveedor sin ningún corte de servicio, tal como me dijeron.', service: 'Luz', savings: '-22€/mes' },
+];
+
+// ---------- Init ----------
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons();
+  renderFaqList('todos');
+  renderDocs();
+  renderTestimonials();
+  setTimeout(() => { document.getElementById('wa-tooltip').classList.remove('hidden'); }, 3500);
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    if (window.scrollY > 20) {
+      nav.classList.add('bg-white/95','backdrop-blur-md','shadow-md','border-b','border-sky-100','py-3');
+      nav.classList.remove('bg-white/90','border-b','border-sky-100/80','py-4');
+    } else {
+      nav.classList.remove('bg-white/95','backdrop-blur-md','shadow-md','py-3');
+      nav.classList.add('bg-white/90','border-b','border-sky-100/80','py-4');
+    }
+  });
+  updateCalculator();
+});
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const open = document.getElementById('menu-icon-open');
+  const close = document.getElementById('menu-icon-close');
+  menu.classList.toggle('hidden');
+  open.classList.toggle('hidden');
+  close.classList.toggle('hidden');
+}
+
+function openWhatsApp(customText) {
+  const text = encodeURIComponent(customText || '¡Hola! Me contacto desde la web de Argentina Energy. Quiero consultar sobre las ofertas de luz y gas en Italia.');
+  window.open(`https://wa.me/${COMPANY.whatsapp}?text=${text}`, '_blank');
+}
+
+function selectService(service) {
+  setContactService(service === 'luz' ? 'luz' : service === 'gas' ? 'gas' : service === 'empresa' ? 'empresa' : 'ambos');
+  scrollToId('contacto-section');
+}
+
+function selectPlan(planId, name) {
+  setContactService(planId.startsWith('luz') ? 'luz' : 'gas');
+  document.getElementById('c-mensaje').value = `Hola, estoy interesado/a en el plan "${name}". Quisiera recibir más información y avanzar con el cambio.`;
+  scrollToId('contacto-section');
+}
+
+// ---------- Savings Calculator ----------
+let calcProfile = 'hogar';
+let calcService = 'dual';
+
+function setProfile(p) {
+  calcProfile = p;
+  const hogarBtn = document.getElementById('profile-hogar');
+  const empresaBtn = document.getElementById('profile-empresa');
+  const slider = document.getElementById('bill-slider');
+  if (p === 'hogar') {
+    hogarBtn.className = 'py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm transition-all cursor-pointer bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md';
+    empresaBtn.className = 'py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm transition-all cursor-pointer text-slate-600 hover:text-slate-900';
+    slider.min = 40; slider.max = 400; slider.step = 5;
+    if (parseInt(slider.value) > 400) slider.value = 140;
+    document.getElementById('range-min').textContent = 'Min: 40€';
+    document.getElementById('range-avg').textContent = 'Promedio: 120€ - 180€';
+    document.getElementById('range-max').textContent = 'Max: 400€+';
+  } else {
+    hogarBtn.className = 'py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm transition-all cursor-pointer text-slate-600 hover:text-slate-900';
+    empresaBtn.className = 'py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm transition-all cursor-pointer bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md';
+    slider.min = 150; slider.max = 1800; slider.step = 25;
+    if (parseInt(slider.value) < 200) slider.value = 450;
+    document.getElementById('range-min').textContent = 'Min: 150€';
+    document.getElementById('range-avg').textContent = 'Promedio: 500€ - 900€';
+    document.getElementById('range-max').textContent = 'Max: 1800€+';
+  }
+  updateCalculator();
+}
+
+function setCalcService(s) {
+  calcService = s;
+  ['luz','gas','dual'].forEach(id => {
+    const btn = document.getElementById('service-'+id);
+    const isActive = id === s;
+    const colors = { luz: 'sky', gas: 'amber', dual: 'sky' };
+    if (isActive) {
+      btn.className = `p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1 cursor-pointer bg-${colors[id]}-50 border-${colors[id]}-500 text-${colors[id]}-900 ring-2 ring-${colors[id]}-400 font-bold shadow-sm`;
+    } else {
+      btn.className = 'p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1 cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-300';
+    }
+  });
+  updateCalculator();
+}
+
+function updateCalculator() {
+  const bill = parseInt(document.getElementById('bill-slider').value);
+  document.getElementById('bill-display').innerHTML = `${bill} € <span class="text-xs text-slate-500 font-normal">/mes</span>`;
+
+  let pct = 0.18;
+  if (calcService === 'dual') pct = 0.24;
+  if (calcService === 'gas') pct = 0.20;
+  if (calcService === 'luz') pct = 0.18;
+  if (calcProfile === 'empresa') pct = 0.26;
+
+  const monthlySaving = Math.round(bill * pct);
+  const annualSaving = monthlySaving * 12;
+  const newBill = Math.max(20, bill - monthlySaving);
+
+  document.getElementById('monthly-saving').textContent = `-${monthlySaving} €`;
+  document.getElementById('annual-saving').textContent = `~${annualSaving} €/año`;
+  document.getElementById('new-bill').textContent = `~${newBill} €/mes`;
+
+  window._lastCalc = { bill, annualSaving };
+}
+
+function applyCalculation() {
+  let serviceParam = 'ambos';
+  if (calcProfile === 'empresa') serviceParam = 'empresa';
+  else if (calcService === 'luz') serviceParam = 'luz';
+  else if (calcService === 'gas') serviceParam = 'gas';
+  setContactService(serviceParam);
+  const { bill, annualSaving } = window._lastCalc;
+  document.getElementById('c-mensaje').value = `Hola, realicé la simulación de ahorro: pago actualmente aprox ${bill}€/mes y me gustaría obtener el ahorro estimado de ~${annualSaving}€/año. Por favor contáctenme.`;
+  scrollToId('contacto-section');
+}
+
+// ---------- Bill Guide Tabs ----------
+function setGuideTab(tab) {
+  ['partes','tramites','seguridad'].forEach(t => {
+    const btn = document.getElementById('guide-tab-'+t);
+    const panel = document.getElementById('guide-panel-'+t);
+    if (t === tab) {
+      const gradients = { partes: 'from-sky-500 to-blue-600', tramites: 'from-amber-500 to-orange-500', seguridad: 'from-rose-500 to-red-600' };
+      btn.className = `px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer bg-gradient-to-r ${gradients[t]} text-white shadow-md`;
+      panel.classList.remove('hidden');
+    } else {
+      btn.className = 'px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer text-slate-600 hover:text-slate-900';
+      panel.classList.add('hidden');
+    }
+  });
+  lucide.createIcons();
+}
+
+// ---------- FAQ Section ----------
+let faqCategory = 'todos';
+let faqOpenIndex = 0;
+
+function setFaqMainTab(tab) {
+  const faqBtn = document.getElementById('faq-tab-faq');
+  const docsBtn = document.getElementById('faq-tab-docs');
+  const faqPanel = document.getElementById('faq-panel-faq');
+  const docsPanel = document.getElementById('faq-panel-docs');
+  if (tab === 'faq') {
+    faqBtn.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 transition-all cursor-pointer bg-sky-600 text-white shadow-md';
+    docsBtn.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 transition-all cursor-pointer relative text-slate-700 hover:text-amber-900 hover:bg-amber-100/60';
+    faqPanel.classList.remove('hidden');
+    docsPanel.classList.add('hidden');
+  } else {
+    docsBtn.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 transition-all cursor-pointer relative bg-amber-500 text-slate-950 shadow-md';
+    faqBtn.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 transition-all cursor-pointer text-slate-700 hover:text-sky-900 hover:bg-sky-100/60';
+    docsPanel.classList.remove('hidden');
+    faqPanel.classList.add('hidden');
+  }
+  lucide.createIcons();
+}
+
+function setFaqCategory(cat) {
+  faqCategory = cat;
+  document.querySelectorAll('.faq-cat-btn').forEach(btn => {
+    if (btn.dataset.cat === cat) {
+      btn.className = 'faq-cat-btn px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors cursor-pointer border bg-sky-600 text-white border-sky-600 shadow-sm';
+    } else {
+      btn.className = 'faq-cat-btn px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors cursor-pointer border bg-white text-slate-700 border-slate-300 hover:border-sky-300 hover:bg-sky-50';
+    }
+  });
+  faqOpenIndex = 0;
+  renderFaqList(cat);
+}
+
+function renderFaqList(cat) {
+  const base = SITE_LANG === 'it' ? FAQ_LIST_IT : FAQ_LIST;
+  const list = cat === 'todos' ? base : base.filter(f => f.category === cat);
+  const container = document.getElementById('faq-accordion');
+  container.innerHTML = list.map((faq, idx) => `
+    <div class="bg-sky-50/40 border-2 border-sky-100 rounded-2xl overflow-hidden transition-all duration-200 hover:border-sky-300 shadow-xs">
+      <button onclick="toggleFaq(${idx})" class="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-sky-50 transition-colors cursor-pointer">
+        <span class="font-bold text-sm sm:text-base text-slate-900 flex items-center gap-2.5">
+          ${faq.category === 'documentos' ? '<span class="text-xs px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300 font-bold shrink-0"> Doc</span>' : ''}
+          ${faq.question}
+        </span>
+        <div class="p-1.5 rounded-lg bg-sky-100 text-sky-700 shrink-0 transition-transform ${faqOpenIndex === idx ? 'rotate-180 bg-sky-600 text-white' : ''}"><i data-lucide="chevron-down" class="w-4 h-4"></i></div>
+      </button>
+      ${faqOpenIndex === idx ? `<div class="px-5 pb-5 text-xs sm:text-sm text-slate-700 leading-relaxed border-t border-sky-100 pt-4 whitespace-pre-line animate-fadeIn bg-white font-normal">${faq.answer}</div>` : ''}
+    </div>
+  `).join('');
+  document.getElementById('faq-count').textContent = base.length;
+  lucide.createIcons();
+}
+
+function toggleFaq(idx) {
+  faqOpenIndex = faqOpenIndex === idx ? null : idx;
+  renderFaqList(faqCategory);
+}
+
+const ICONS = { FileText: 'file-text', Key: 'key', CreditCard: 'credit-card', Home: 'home', Briefcase: 'briefcase', ShieldCheck: 'shield-check', Smartphone: 'smartphone' };
+let expandedDocId = 'cf';
+
+function renderDocs() {
+  const q = document.getElementById('doc-search').value.toLowerCase().trim();
+  const base = SITE_LANG === 'it' ? DOC_EQUIVALENCES_IT : DOC_EQUIVALENCES;
+  const filtered = !q ? base : base.filter(d =>
+    d.italianDoc.toLowerCase().includes(q) || d.argentinoEquivalent.toLowerCase().includes(q) ||
+    d.description.toLowerCase().includes(q) || d.energyUtilityRole.toLowerCase().includes(q) || d.proTip.toLowerCase().includes(q)
+  );
+  document.getElementById('doc-count').textContent = filtered.length;
+  const grid = document.getElementById('docs-grid');
+  grid.innerHTML = filtered.map(doc => {
+    const isExpanded = expandedDocId === doc.id;
+    return `
+    <div class="bg-white border-2 rounded-2xl transition-all duration-200 overflow-hidden flex flex-col justify-between shadow-sm ${isExpanded ? 'border-sky-400 shadow-md ring-2 ring-sky-100' : 'border-slate-200 hover:border-sky-300'}">
+      <div class="p-5 sm:p-6">
+        <div class="flex items-start justify-between gap-3 mb-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 rounded-xl bg-sky-50 border border-sky-200"><i data-lucide="${ICONS[doc.iconName] || 'info'}" class="w-5 h-5 text-sky-600"></i></div>
+            <div><span class="text-[10px] font-black uppercase tracking-wider text-sky-700 block">🇮🇹 Documento en Italia</span><h4 class="font-black text-slate-900 text-base sm:text-lg">${doc.italianDoc}</h4></div>
+          </div>
+          <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 whitespace-nowrap">${doc.tag}</span>
+        </div>
+        <div class="p-3 rounded-xl bg-sky-50/60 border border-sky-100 mb-4 flex items-center justify-between">
+          <div><span class="text-[10px] text-slate-500 font-bold block"> Equivalente en Argentina:</span><span class="text-xs sm:text-sm font-black text-sky-800">${doc.argentinoEquivalent}</span></div>
+          <div class="text-right"><span class="text-[10px] text-slate-500 block">Sigla</span><span class="font-mono text-xs font-bold text-amber-700">${doc.italianAcronym}</span></div>
+        </div>
+        <p class="text-xs text-slate-600 leading-relaxed mb-4">${doc.description}</p>
+        <div class="p-3.5 rounded-xl bg-sky-50 border border-sky-200 text-xs space-y-1">
+          <div class="flex items-center gap-1.5 text-sky-800 font-bold text-[11px] uppercase tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-sky-600 shrink-0"></i><span>¿Para qué sirve en Luz y Gas?</span></div>
+          <p class="text-slate-700 text-[11px] leading-relaxed">${doc.energyUtilityRole}</p>
+        </div>
+        ${isExpanded ? `
+        <div class="mt-4 pt-4 border-t border-slate-200 space-y-3 animate-fadeIn">
+          <div><span class="text-[11px] font-bold text-slate-700 block mb-1">🏛️ ¿Cómo se obtiene en Italia?</span><p class="text-xs text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">${doc.howToGetInItaly}</p></div>
+          <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs"><span class="font-bold text-amber-900 text-[11px] flex items-center gap-1.5 mb-1"><span>💡</span> Tip Argentina Energy para recién llegados:</span><p class="text-slate-800 text-[11px] leading-relaxed">${doc.proTip}</p></div>
+        </div>` : ''}
+      </div>
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+        <button onclick="toggleDoc('${doc.id}')" class="text-xs font-bold text-sky-700 hover:text-sky-900 flex items-center gap-1 cursor-pointer"><span>${isExpanded ? 'Ocultar detalles' : 'Ver cómo tramitarlo y tips'}</span><i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform ${isExpanded ? 'rotate-180' : ''}"></i></button>
+        <button onclick="openWhatsApp(TT('Hola Argentina Energy, tengo una consulta sobre trámites y documentos en Italia:') + ' ' + '${doc.italianDoc}')" class="text-[11px] font-bold text-emerald-700 hover:text-emerald-900 flex items-center gap-1 cursor-pointer bg-emerald-100 hover:bg-emerald-200 px-2.5 py-1 rounded-lg transition-colors"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i><span>Consultar</span></button>
+      </div>
+    </div>`;
+  }).join('');
+  lucide.createIcons();
+}
+
+function toggleDoc(id) {
+  expandedDocId = expandedDocId === id ? null : id;
+  renderDocs();
+}
+
+// ---------- Testimonials ----------
+function renderTestimonials() {
+  const grid = document.getElementById('testimonials-grid');
+  grid.innerHTML = (SITE_LANG === 'it' ? TESTIMONIALS_IT : TESTIMONIALS).map(t => `
+    <div class="bg-sky-50/40 border-2 border-sky-100 hover:border-sky-300 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="${t.avatar}" alt="${t.name}" class="w-12 h-12 rounded-full object-cover border-2 border-sky-400 shrink-0 shadow-sm">
+          <div><h3 class="font-bold text-sm text-slate-900">${t.name}</h3><div class="flex items-center gap-1 text-[11px] text-sky-700 font-semibold"><i data-lucide="map-pin" class="w-3 h-3"></i><span>${t.city}</span></div><p class="text-[10px] text-slate-500 font-medium">${t.origin}</p></div>
+        </div>
+        <div class="flex items-center gap-1 mb-3">${Array(t.rating).fill('<i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>').join('')}</div>
+        <p class="text-xs text-slate-700 leading-relaxed italic line-clamp-6 font-normal">"${t.comment}"</p>
+      </div>
+      <div class="mt-6 pt-4 border-t border-sky-200 flex items-center justify-between">
+        <div><span class="text-[10px] uppercase font-bold text-slate-500 block">Servicio: ${t.service}</span><span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">Ahorro: ${t.savings}</span></div>
+        <div class="w-7 h-7 rounded-full bg-sky-100 flex items-center justify-center text-sky-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-sky-600"></i></div>
+      </div>
+    </div>
+  `).join('');
+  lucide.createIcons();
+}
+
+// ---------- Contact Form ----------
+let contactService = 'ambos';
+let contactFileName = null;
+
+function setContactService(s) {
+  contactService = s;
+  document.querySelectorAll('.contact-service-btn').forEach(btn => {
+    if (btn.dataset.service === s) {
+      btn.className = 'contact-service-btn py-2 px-2 rounded-xl border-2 text-xs font-bold transition-all cursor-pointer bg-sky-100 border-sky-500 text-sky-900 shadow-sm';
+    } else {
+      btn.className = 'contact-service-btn py-2 px-2 rounded-xl border-2 text-xs font-bold transition-all cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-300';
+    }
+  });
+}
+
+function handleContactFile(e) {
+  if (e.target.files && e.target.files[0]) {
+    contactFileName = e.target.files[0].name;
+    document.getElementById('c-filename').textContent = contactFileName;
+    document.getElementById('c-file-remove').classList.remove('hidden');
+  }
+}
+function removeContactFile() {
+  contactFileName = null;
+  document.getElementById('c-filename').textContent = 'Seleccionar PDF o Foto...';
+  document.getElementById('c-file-remove').classList.add('hidden');
+}
+
+function serviceLabel(s) {
+  return s === 'luz' ? 'Luz Eléctrica' : s === 'gas' ? 'Gas Metano' : s === 'empresa' ? 'Servicios para Empresa / Partita IVA' : 'Luz + Gas (Pack Dual)';
+}
+
+function sendContactWhatsApp() {
+  const nombre = document.getElementById('c-nombre').value;
+  const apellido = document.getElementById('c-apellido').value;
+  const telefono = document.getElementById('c-telefono').value;
+  const email = document.getElementById('c-email').value;
+  const mensaje = document.getElementById('c-mensaje').value;
+  const text = encodeURIComponent(`¡Hola Argentina Energy!\n\nMi nombre es ${nombre || ''} ${apellido || ''}.\nQuiero consultar por: ${serviceLabel(contactService)}.\nTel/WhatsApp: ${telefono || 'Sin teléfono'}\nEmail: ${email || 'Sin email'}\nMensaje: ${mensaje || 'Quiero recibir información y tarifas en español.'}`);
+  window.open(`https://wa.me/${COMPANY.whatsapp}?text=${text}`, '_blank');
+}
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('c-submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = `<span>${TT('Enviando consulta...')}</span>`;
+  setTimeout(() => {
+    const nombre = document.getElementById('c-nombre').value;
+    const telefono = document.getElementById('c-telefono').value;
+    document.getElementById('contact-success-msg').innerHTML = `Gracias <strong class="text-sky-700">${nombre}</strong>. Hemos recibido tu consulta. Nos pondremos en contacto a la brevedad en tu teléfono <strong class="text-amber-700">${telefono}</strong> o correo.`;
+    document.getElementById('contact-form').classList.add('hidden');
+    document.getElementById('contact-success').classList.remove('hidden');
+    lucide.createIcons();
+  }, 900);
+}
+
+function resetContactForm() {
+  document.getElementById('contact-form').reset();
+  document.getElementById('contact-form').classList.remove('hidden');
+  document.getElementById('contact-success').classList.add('hidden');
+  const btn = document.getElementById('c-submit-btn');
+  btn.disabled = false;
+  btn.innerHTML = `<i data-lucide="send" class="w-4 h-4"></i><span>${TT('Enviar Mensaje')}</span>`;
+  removeContactFile();
+  setContactService('ambos');
+  lucide.createIcons();
+}
+
+// ---------- Bill Audit Modal ----------
+let auditService = 'luz_gas';
+let auditFileName = null;
+
+function openAuditModal() {
+  document.getElementById('audit-modal').classList.remove('hidden');
+  document.getElementById('audit-modal').classList.add('flex');
+}
+function closeAuditModal() {
+  document.getElementById('audit-modal').classList.add('hidden');
+  document.getElementById('audit-modal').classList.remove('flex');
+  document.getElementById('audit-form-view').classList.remove('hidden');
+  document.getElementById('audit-success-view').classList.add('hidden');
+}
+
+function setAuditService(s) {
+  auditService = s;
+  document.querySelectorAll('.audit-service-btn').forEach(btn => {
+    if (btn.dataset.service === s) {
+      btn.className = 'audit-service-btn py-2 px-3 rounded-xl border-2 text-center transition-all cursor-pointer bg-sky-100 border-sky-500 text-sky-900 font-black';
+    } else {
+      btn.className = 'audit-service-btn py-2 px-3 rounded-xl border-2 text-center transition-all cursor-pointer bg-white border-slate-200 text-slate-600 hover:border-sky-200';
+    }
+  });
+}
+
+function handleAuditFile(e) {
+  if (e.target.files && e.target.files[0]) {
+    auditFileName = e.target.files[0].name;
+    document.getElementById('audit-file-empty').classList.add('hidden');
+    document.getElementById('audit-filename').textContent = auditFileName;
+    const sel = document.getElementById('audit-file-selected');
+    sel.classList.remove('hidden');
+    sel.classList.add('flex');
+  }
+}
+
+function auditWhatsAppSend() {
+  const name = document.getElementById('audit-name').value;
+  const text = encodeURIComponent(`¡Hola Argentina Energy! Soy ${name || 'un compatriota'}, vivo en Italia y quiero enviar mi factura para que me hagan una auditoría gratuita y ver cuánto puedo ahorrar.`);
+  window.open(`https://wa.me/${COMPANY.whatsapp}?text=${text}`, '_blank');
+}
+
+function handleAuditSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('audit-submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = `<span>${TT('Procesando...')}</span>`;
+  setTimeout(() => {
+    const name = document.getElementById('audit-name').value;
+    document.getElementById('audit-success-name').textContent = name || 'compatriota';
+    document.getElementById('audit-form-view').classList.add('hidden');
+    document.getElementById('audit-success-view').classList.remove('hidden');
+  }, 900);
+}
+
+// ---------- Legal Modal ----------
+const LEGAL_CONTENT = {
+  privacy: `
+    <div class="flex items-center gap-3 pb-3 border-b border-sky-100"><div class="p-2.5 rounded-xl bg-sky-100 text-sky-700"><i data-lucide="lock" class="w-5 h-5"></i></div><div><h3 class="text-xl font-black text-slate-900">Política de Privacidad</h3><p class="text-xs text-sky-700 font-medium">Argentina Energy - FraStel Corporation Group</p></div></div>
+    <div class="space-y-3 text-slate-600 leading-relaxed font-normal mt-4">
+      <p><strong class="text-slate-900">1. Responsable del Tratamiento:</strong> Argentina Energy (FraStel Corporation Group), con domicilio en Via Bartolomeo Bruni 7, 12100 Cuneo (CN), Italia, correo electrónico: info@argentinaenergy.it.</p>
+      <p><strong class="text-slate-900">2. Finalidad del Tratamiento:</strong> Los datos proporcionados mediante nuestros formularios o canales de contacto son utilizados exclusivamente para: (a) Realizar el análisis y comparación de tarifas de luz y gas, (b) Gestionar la intermediación y trámites de cambio de proveedor, voltura o subentro solicitados por el usuario, (c) Mantener la comunicación directa para el asesoramiento personalizado.</p>
+      <p><strong class="text-slate-900">3. Base Jurídica:</strong> El tratamiento se fundamenta en el consentimiento expreso del usuario al remitir voluntariamente sus datos o documentos de factura conforme al Reglamento General de Protección de Datos (RGPD UE 2016/679).</p>
+      <p><strong class="text-slate-900">4. No Comercialización a Terceros:</strong> Argentina Energy NO vende ni cede bases de datos a empresas de telemarketing invasivo.</p>
+      <p><strong class="text-slate-900">5. Derechos ARCO:</strong> Podés ejercer tus derechos de acceso, rectificación, cancelación u oposición enviando un email a info@argentinaenergy.it.</p>
+    </div>`,
+  cookies: `
+    <div class="flex items-center gap-3 pb-3 border-b border-sky-100"><div class="p-2.5 rounded-xl bg-amber-100 text-amber-700"><i data-lucide="cookie" class="w-5 h-5"></i></div><div><h3 class="text-xl font-black text-slate-900">Política de Cookies</h3><p class="text-xs text-amber-700 font-medium">Transparencia y navegación técnica</p></div></div>
+    <div class="space-y-3 text-slate-600 leading-relaxed font-normal mt-4">
+      <p>Este sitio web utiliza cookies técnicas indispensables para el funcionamiento y la navegación correcta del sitio, permitiendo guardar preferencias de visualización y el estado de la calculadora.</p>
+      <p>No recopilamos cookies de seguimiento publicitario abusivo de terceros sin tu consentimiento. Podés configurar tu navegador para bloquear las cookies, aunque algunas funciones del simulador podrían verse afectadas.</p>
+    </div>`,
+  terms: `
+    <div class="flex items-center gap-3 pb-3 border-b border-sky-100"><div class="p-2.5 rounded-xl bg-indigo-100 text-indigo-700"><i data-lucide="shield" class="w-5 h-5"></i></div><div><h3 class="text-xl font-black text-slate-900">Términos y Condiciones del Servicio</h3><p class="text-xs text-indigo-700 font-medium">Condiciones de asesoramiento energético</p></div></div>
+    <div class="space-y-3 text-slate-600 leading-relaxed font-normal mt-4">
+      <p>Argentina Energy actúa como asesor y gestor de compras colectivas de energía para la comunidad hispanohablante en Italia.</p>
+      <p>La suscripción y activación formal de los contratos de suministro eléctrico y de gas se rige por las normativas de ARERA y las condiciones contractuales del proveedor autorizado seleccionado por el cliente.</p>
+      <p>Las estimaciones de ahorro se calculan en base a tarifas medias del mercado mayorista y no constituyen una garantía inalterable si varían los hábitos de consumo individuales.</p>
+    </div>`
+};
+
+function openLegalModal(type) {
+  document.getElementById('legal-content').innerHTML = LEGAL_CONTENT[type];
+  document.getElementById('legal-modal').classList.remove('hidden');
+  document.getElementById('legal-modal').classList.add('flex');
+  lucide.createIcons();
+}
+function closeLegalModal() {
+  document.getElementById('legal-modal').classList.add('hidden');
+  document.getElementById('legal-modal').classList.remove('flex');
+}
+// ============ ITALIANO / ESPAÑOL ============
+let SITE_LANG = 'es';
+const TRANSLATION_DICT = {
+  'Ofertas Luz': 'Offerte Luce',
+  'Ofertas Gas': 'Offerte Gas',
+  'Simulador': 'Simulatore',
+  'Guía Factura': 'Guida Bolletta',
+  'Doc. Argentina vs Italia': 'Documenti Argentina vs Italia',
+  'Doc. Argentina vs Italia ': 'Documenti Argentina vs Italia ',
+  ' Doc. Argentina vs Italia': ' Documenti Argentina vs Italia',
+  'Preguntas': 'Domande',
+  'Contáctanos': 'Contattaci',
+  'Auditar Factura': 'Analizza Bolletta',
+  'Pedir Asesoría': 'Chiedi Consulenza',
+  'Comunidad Argentina en Italia': 'Comunità Argentina in Italia',
+  'Más somos, más baratos seremos': 'Più siamo, più economici saremo',
+  '¡más somos, más baratos seremos!': 'più siamo, più economici saremo!',
+  ' 🇮🇹 Más somos, más baratos seremos.': ' 🇮🇹 Più siamo, più economici saremo.',
+  'Sign up': 'Registrati',
+  '4.9★': '4.9★',
+  'Preguntas Frecuentes': 'Domande Frequenti',
+  'Todas las preguntas': 'Tutte le domande',
+  'documentos disponibles': 'documenti disponibili',
+  '⚡ Solo Luz': '⚡ Solo Luce',
+  'Solo Luz': 'Solo Luce',
+  '🔥 Solo Gas': '🔥 Solo Gas',
+  'Solo Gas': 'Solo Gas',
+  'Luz + Gas': 'Luce + Gas',
+  '⚡🔥 Luz + Gas': '⚡🔥 Luce + Gas',
+  '🎁 Pack Dual Luz + Gas': '🎁 Pacchetto Dual Luce + Gas',
+  '⚡🔥 Pack Dual Luz + Gas': '⚡🔥 Pacchetto Dual Luce + Gas',
+  'Comunidad Argentina en Italia •': 'Comunità Argentina in Italia •',
+  'Auditar mi Factura Gratis': 'Analizza la mia Bolletta Gratis',
+  'Analizar Factura Gratis': 'Analizza Bolletta Gratis',
+  'Consultar por WhatsApp': 'Scrivici su WhatsApp',
+  'Enviar por WhatsApp': 'Invia via WhatsApp',
+  'WhatsApp en Español': 'WhatsApp in Spagnolo',
+  'o por WhatsApp': 'o via WhatsApp',
+  'Escribirnos ahora al WhatsApp': 'Scrivici subito su WhatsApp',
+  'Escribinos por WhatsApp y te asesoramos en español ahora mismo.': 'Scrivici su WhatsApp e ti assistiamo in spagnolo in questo momento.',
+  'Hablar por WhatsApp': 'Parla su WhatsApp',
+  '¿Tenés dudas con tu factura?': 'Hai dubbi sulla tua bolletta?',
+  '⚡ Tarifas & Factura': '⚡ Tariffe & Bolletta',
+  '📋 Voltura & Subentro': '📋 Voltura & Subentro',
+  ' Trámites & Documentos Argentinos': ' Pratiche & Documenti Argentini',
+  'Guía Bolletta Italiana': 'Guida Bolletta Italiana',
+  '1. Partes de la Factura': '1. Parti della Bolletta',
+  '2. Voltura vs Subentro': '2. Voltura vs Subentro',
+  '3. Alerta de Estafas': '3. Allarme Truffe',
+  'Centro de Ayuda & Trámites': 'Centro di Assistenza & Pratiche',
+  'Equivalencias de Documentos': 'Equivalenze di Documenti',
+  'Bolletta Italiana': 'Bolletta Italiana',
+  'Explicación clara de tu código PDR': 'Spiegazione chiara del tuo codice PDR',
+  'Guía Práctica para Argentinos en Italia': 'Guida Pratica per Argentini in Italia',
+  ' 🇮🇹 Guía Práctica para Argentinos en Italia': ' 🇮🇹 Guida Pratica per Argentini in Italia',
+  'Elegí tu oferta.': 'Scegli la tua offerta.',
+  'Energía justa y sin burocracia.': 'Energia giusta e senza burocrazia.',
+  'Selecciona el servicio por el cual querés tener información. Te recordamos que en esta fase nos estamos poniendo en contacto:': 'Seleziona il servizio di cui vuoi ricevere informazioni. Ti ricordiamo che in questa fase ci stiamo mettendo in contatto:',
+  'Comparamos tarifas, gestionamos el cambio y te cuidamos el bolsillo.': 'Confrontiamo le tariffe, gestiamo il cambio e proteggiamo il tuo portafoglio.',
+  'para la comunidad argentina en Italia': 'per la comunità latina in Italia',
+  '¿No sabés cuánto consumís? Analizamos tu factura gratis →': 'Non sai quanto consumi? Analizziamo la tua bolletta gratis →',
+  '¿No sabés cuánto consumís? Analizamos tu factura gratis': 'Non sai quanto consumi? Analizziamo la tua bolletta gratis',
+  'Familias argentinas protegidas': 'Famiglie latine protette',
+  'Argentinos residiendo en toda Italia': 'Argentini residenti in tutta Italia',
+  'Hogares con calefacción segura': 'Case con riscaldamento sicuro',
+  'Gas industrial y cocina comercial': 'Gas industriale e cucina commerciale',
+  'Gastronomía, talleres, oficinas y autónomos. Reducción de costos de potencia e IVA deducible.': 'Gastronomia, officine, uffici e autonomi. Riduzione dei costi di potenza e IVA deducibile.',
+  '100% en español': '100% in spagnolo',
+  'Atención directa en español por WhatsApp': 'Assistenza diretta in spagnolo su WhatsApp',
+  '100% en Español ': '100% in Spagnolo ',
+  'Usuarios Residenciales': 'Utenze Domestiche',
+  'Resultados reales de la comunidad argentina en Italia': 'Risultati reali della comunità in Italia',
+  'Compatriotas que ya ahorran con nosotros': 'Connazionali che già risparmiano con noi',
+  'Satisfacción del Cliente': 'Soddisfazione del Cliente',
+  'Valoración de la comunidad argentina': 'Valutazione della comunità latina',
+  'Familias Atendidas': 'Famiglie Assistite',
+  'Testimonios Reales': 'Testimonianze Reali',
+  'Ahorro promedio:': 'Risparmio medio:',
+  'Ahorro Anual': 'Risparmio Annuale',
+  'Ahorro mensual aproximado': 'Risparmio mensile stimato',
+  'Tu nueva cuota': 'La tua nuova rata',
+  'Tu Ahorro Estimado': 'Il tuo Risparmio Stimato',
+  'Euros en factura promedio': 'Euro in bolletta media',
+  'Ahorra hasta -25€/mes': 'Risparmia fino a -25€/mese',
+  'Ahorra hasta -30€/mes': 'Risparmia fino a -30€/mese',
+  'Ahorra hasta -45€/mes': 'Risparmia fino a -45€/mese',
+  'Ahorra hasta -60€/mes': 'Risparmia fino a -60€/mese',
+  'Hasta -75€': 'Fino a -75€',
+  'Ahorro real en tu factura': 'Risparmio reale sulla tua bolletta',
+  'Trámites fáciles, rápidos y sin estrés': 'Pratiche facili, rapide e senza stress',
+  'Asesoramiento en tu idioma': 'Consulenza nella tua lingua',
+  'Hablamos español y entendemos las necesidades de los argentinos en Italia.': 'Parliamo spagnolo e comprendiamo le esigenze degli argentini in Italia.',
+  'Trámites sin Cortes': 'Pratiche Senza Interruzioni',
+  'Cambios de proveedor sin interrupción de servicio': 'Cambio fornitore senza interruzioni del servizio',
+  'Sin cortes de servicio': 'Senza interruzioni del servizio',
+  'Sin costos de activación': 'Senza costi di attivazione',
+  'Sin permanencia mínima obligatoria': 'Senza durata minima obbligatoria',
+  'Sin costos de activación ni penalidades': 'Senza costi di attivazione né penali',
+  'Voltura, Subentro y Allaccio sin filas': 'Voltura, Subentro e Allaccio senza file',
+  'Atención Personalizada': 'Assistenza Personalizzata',
+  'Atención directa vía WhatsApp y teléfono': 'Assistenza diretta via WhatsApp e telefono',
+  'Autolectura fácil para evitar facturas estimadas': 'Autolettura semplice per evitare bollette stimate',
+  'Autolectura simple vía app o WhatsApp': 'Autolettura semplice tramite app o WhatsApp',
+  'Energía 100% de fuentes certificadas': 'Energia 100% da fonti certificate',
+  'Poder de compra grupal para compatriotas': 'Potere d\'acquisto di gruppo per i connazionali',
+  'Poder de compra grupal y tarifas transparentes.': 'Potere d\'acquisto di gruppo e tariffe trasparenti.',
+  'Unidos logramos mejores condiciones frente a las grandes compañías energéticas italianas.': 'Uniti otteniamo condizioni migliori contro le grandi compagnie energetiche italiane.',
+  'Responderemos a todas tus preguntas': 'Risponderemo a tutte le tue domande',
+  'Todo claro, sin vueltas ni tecnicismos': 'Tutto chiaro, senza troppo giro né tecnicismi',
+  'Respuestas a tus dudas sobre el mercado energético italiano y la guía definitiva de equivalencias de documentos entre Latina e Italia.': 'Risposte ai tuoi dubbi sul mercato energetico italiano e la guida definitiva alle equivalenze dei documenti tra Latina e Italia.',
+  'Sabemos que muchos compatriotas enfrentan dificultades al momento de contratar, entender o comparar tarifas energéticas en Italia. Por eso, nuestro objetivo es facilitarte todo el proceso, cuidando tu bolsillo y tu tranquilidad.': 'Sappiamo che molti connazionali incontrano difficoltà al momento di stipulare, capire o confrontare le tariffe energetiche in Italia. Per questo il nostro obiettivo è facilitarti l\'intero processo, proteggendo il tuo portafoglio e la tua tranquillità.',
+  'Resumen Rápido: ¿Qué necesitás para dar de alta la luz y el gas hoy?': 'Riepilogo Rapido: cosa ti serve per attivare luce e gas oggi?',
+  '1. Última Factura o Código POD/PDR': '1. Ultima Bolletta o Codice POD/PDR',
+  '2. Codice Fiscale + Pasaporte o CIE': '2. Codice Fiscale + Passaporto o CIE',
+  '3. Código IBAN (Opcional pero recomendado)': '3. Codice IBAN (Opzionale ma consigliato)',
+  '• Tu Codice Fiscale y Documento': '• Il tuo Codice Fiscale e documento',
+  '• Tu Codice Fiscale y contrato de alquiler': '• Il tuo Codice Fiscale e contratto di affitto',
+  '• Factura del inquilino anterior (o POD/PDR)': '• Bolletta dell\'inquilino precedente (o POD/PDR)',
+  '• Lectura actual del medidor': '• Lettura attuale del contatore',
+  '• Matrícula / Número de serie del contador': '• Matricola / Numero di serie del contatore',
+  '• Nos encargamos de dar la baja anterior': '• Ci occupiamo noi della disdetta precedente',
+  '• 100% Gratuito por ley': '• 100% Gratuito per legge',
+  '• Cero cortes de suministro': '• Zero interruzioni di fornitura',
+  '• Demora aproximada: 5 a 7 días hábiles': '• Tempo stimato: da 5 a 7 giorni lavorativi',
+  'Estás actualmente con otra empresa italiana (Enel, Eni, A2A, Edison, etc.) y querés pasarte a las tarifas comunitarias de': 'Attualmente sei con un\'altra azienda italiana (Enel, Eni, A2A, Edison, ecc.) e vuoi passare alle tariffe comunitarie di',
+  'Oferta para servicios de': 'Offerta per servizi di',
+  'Olvidate de la burocracia italiana — con': 'Dimentica la burocrazia italiana — con',
+  ', tu energía se gestiona en minutos y sin complicaciones.': ', la tua energia viene gestita in pochi minuti e senza complicazioni.',
+  'Traspaso 100% gratuito sin corte de luz/gas': 'Trasferimento 100% gratuito senza interruzione di luce/gas',
+  'Gestión de Voltura & Subentro': 'Gestione Voltura & Subentro',
+  '📋 Gestión de Voltura & Subentro': '📋 Gestione Voltura & Subentro',
+  'Nos ocupamos de todo el proceso por vos: análisis de facturas, cambio de proveedor, activación del servicio y asistencia continua.': 'Ci occupiamo di tutto il processo per te: analisi delle bollette, cambio fornitore, attivazione del servizio e assistenza continua.',
+  'Nuestros convenios con proveedores confiables nos permiten ofrecer precios exclusivos y transparentes, sin costos ocultos ni cláusulas engañosas.': 'I nostri accordi con fornitori affidabili ci permettono di offrire prezzi esclusivi e trasparenti, senza costi nascosti né clausole ingannevoli.',
+  'Te enviamos la propuesta por escrito en español, detallando cada costo antes de cualquier confirmación formal.': 'Ti inviamo la proposta per iscritto in spagnolo, dettagliando ogni costo prima di qualsiasi conferma formale.',
+  'Te explicamos cada detalle de tu contrato de forma simple, clara y humana, para que tomes decisiones con total confianza sin lidiar con tecnicismos italianos confusos.': 'Ti spieghiamo ogni dettaglio del tuo contratto in modo semplice, chiaro e umano, per prendere decisioni con piena fiducia senza tecnicismi italiani confusi.',
+  'Te explicamos cada detalle de tu contrato de forma simple, clara y humana, para que tomes decisiones con total confianza y sin sorpresas en tu cuenta bancaria.': 'Ti spieghiamo ogni dettaglio del tuo contratto in modo semplice, chiaro e umano, per prendere decisioni con piena fiducia e senza sorprese sul tuo conto bancario.',
+  'Contáctanos sin compromiso': 'Contattaci senza impegno',
+  '¿Tenés dudas sobre algún trámite o factura en Italia?': 'Hai dubbi su qualche pratica o bolletta in Italia?',
+  'Completá el formulario o escribinos directo por WhatsApp. Un compatriota te asesorará paso a paso.': 'Compila il modulo o scrivici direttamente su WhatsApp. Un connazionale ti assisterà passo dopo passo.',
+  'Escribinos por WhatsApp y te asesoramos en español ahora mismo.': 'Scrivici su WhatsApp e ti assistiamo in spagnolo subito.',
+  'Horario: Lunes a Viernes 9:00–18:00 (hora Italia)': 'Orario: Lunedì-Venerdì 9:00–18:00 (ora italiana)',
+  'Lunes a Viernes 9:00–18:00 (hora Italia)': 'Lunedì-Venerdì 9:00–18:00 (ora italiana)',
+  '📍 Cuneo (Piemonte) y Cobertura Nacional': '📍 Cuneo (Piemonte) e Copertura Nazionale',
+  'Nuestra sede se encuentra en la provincia de Cúneo (Piemonte), pero brindamos cobertura, asesoría y trámites energéticos en toda Italia (Milano, Roma, Torino, Bologna, Firenze, Napoli, Palermo y más).': 'La nostra sede è in provincia di Cuneo (Piemonte), ma offriamo copertura, consulenza e pratiche energetiche in tutta Italia (Milano, Roma, Torino, Bologna, Firenze, Napoli, Palermo e altro).',
+  'Nuestro equipo en Cuneo (Piamonte) te responde 100% en español. Escribinos o envianos una foto de tus papeles y te guiamos paso a paso.': 'Il nostro team a Cuneo (Piemonte) ti risponde 100% in spagnolo. Scrivici o inviaci una foto dei tuoi documenti e ti guidiamo passo dopo passo.',
+  'Llamar a Cuneo: +39 0172 1860282': 'Chiama a Cuneo: +39 0172 1860282',
+  'Ayudamos a la comunidad argentina residente en Italia a acceder a servicios de luz y gas confiables, a precios justos y con asesoramiento 100% en español.': 'Aiutiamo la comunità latina residente in Italia ad accedere a servizi di luce e gas affidabili, a prezzi giusti e con consulenza 100% in spagnolo.',
+  'ayudamos a los argentinos que viven en Italia a acceder a servicios de luz y gas confiables, a precios justos y sin complicaciones.': 'aiutiamo gli argentini che vivono in Italia ad accedere a servizi di luce e gas affidabili, a prezzi giusti e senza complicazioni.',
+  'De norte a sur en Italia, cada vez somos más los que elegimos energía transparente en nuestro idioma.': 'Da nord a sud in Italia, sempre più persone scelgono energia trasparente nella nostra lingua.',
+  'Un proyecto de FraStel Corporation Group': 'Un progetto di FraStel Corporation Group',
+  'es un proyecto de': 'è un progetto di',
+  'Contactános para saber toda la información': 'Contattaci per avere tutte le informazioni',
+  'Navegación': 'Navigazione',
+  'Servicios': 'Servizi',
+  'Contacto': 'Contatti',
+  'Sede:': 'Sede:',
+  'Sede Operativa:': 'Sede Operativa:',
+  'Teléfono Fijo:': 'Telefono Fisso:',
+  'Teléfono:': 'Telefono:',
+  'Horario de Atención:': 'Orario di Assistenza:',
+  'Correo Electrónico:': 'Email:',
+  'Email:': 'Email:',
+  'Mobile & WhatsApp:': 'Mobile & WhatsApp:',
+  'Canales y Redes Sociales:': 'Canali e Social:',
+  'Diseñado con': 'Progettato con',
+  'Privacy Policy': 'Privacy Policy',
+  'Cookie Policy': 'Cookie Policy',
+  'Términos de Servicio': 'Termini di Servizio',
+  'Entendido': 'Ho capito',
+  'Cerrar': 'Chiudi',
+  'Quitar': 'Rimuovi',
+  'Enviar Mensaje': 'Invia Messaggio',
+  'Enviando consulta...': 'Invio della richiesta...',
+  'Procesando...': 'Elaborazione...',
+  'Gracias': 'Grazie',
+  'Hemos recibido tu consulta. Nos pondremos en contacto a la brevedad en tu teléfono': 'Abbiamo ricevuto la tua richiesta. Ti ricontatteremo al più presto al tuo telefono',
+  'o correo.': 'o via email.',
+  '¡Mensaje Enviado con Éxito!': 'Messaggio Inviato con Successo!',
+  'Enviar otra consulta': 'Invia un\'altra richiesta',
+  'Tu Nombre y Apellido *': 'Nome e Cognome *',
+  'WhatsApp / Teléfono *': 'WhatsApp / Telefono *',
+  'Correo Electrónico *': 'Email *',
+  'Mensaje:': 'Messaggio:',
+  'Servicio de Interés:': 'Servizio di Interesse:',
+  'Nombre:': 'Nome:',
+  'Apellido:': 'Cognome:',
+  'Teléfono / WhatsApp:': 'Telefono / WhatsApp:',
+  '¿Tenés tu última bolletta (factura) a mano?': 'Hai la tua ultima bolletta a portata di mano?',
+  '¿Querés que auditemos tu factura actual?': 'Vuoi che analizziamo la tua bolletta attuale?',
+  'Auditoría Gratuita de tu Factura': 'Analisi Gratuita della tua Bolletta',
+  '📄 Auditoría Gratuita de Factura': '📄 Analisi Gratuita della Bolletta',
+  'Auditoría de tu factura anterior sin cargo': 'Analisi gratuita della tua bolletta precedente',
+  'Te decimos en 24hs si estás pagando sobreprecio en Italia': 'Ti diciamo in 24 ore se stai pagando un sovrapprezzo in Italia',
+  'Te decimos exactamente si estás pagando de más en 5 minutos.': 'Ti diciamo esattamente se stai pagando troppo in 5 minuti.',
+  'Envíanos tu factura para comparar el costo por Smc →': 'Inviaci la tua bolletta per confrontare il costo per Smc →',
+  '1. Analizaremos tu precio por kWh / Smc y cargos fijos.': '1. Analizzeremo il tuo prezzo per kWh / Smc e le spese fisse.',
+  '2. Te enviaremos por WhatsApp/Email un comparativo exacto de tu ahorro.': '2. Ti invieremo via WhatsApp/Email un confronto esatto del tuo risparmio.',
+  '3. Si decidís cambiarte, lo hacemos 100% online y sin costo.': '3. Se decidi di cambiare, lo facciamo 100% online e senza costi.',
+  'Subila o envianos una foto por WhatsApp y te hacemos una comparación sin costo en 24hs.': 'Caricala o inviaci una foto via WhatsApp e facciamo un confronto gratuito in 24 ore.',
+  'Arrastrá o seleccioná una foto o PDF de tu bolletta': 'Trascina o seleziona una foto o PDF della tua bolletta',
+  'Formatos soportados: PDF, JPG, PNG (máx 15MB)': 'Formati supportati: PDF, JPG, PNG (max 15MB)',
+  'Adjuntar factura actual (Opcional para análisis express):': 'Allega bolletta attuale (Opzionale per analisi express):',
+  '¿De qué servicio es la factura?': 'Di che servizio è la bolletta?',
+  'Seleccionar PDF o Foto...': 'Seleziona PDF o Foto...',
+  'Enviar Factura': 'Invia Bolletta',
+  'Solicitar Análisis Gratuito': 'Richiedi Analisi Gratuita',
+  'Simulador de Factura Italiana': 'Simulatore di Bolletta Italiana',
+  'Enviar foto directo por WhatsApp (+39 393 3192262)': 'Invia foto direttamente su WhatsApp (+39 393 3192262)',
+  '🔒 Tus datos están protegidos conforme al RGPD europeo y solo se utilizan para la comparación tarifaria.': '🔒 I tuoi dati sono protetti secondo il GDPR europeo e vengono usati solo per il confronto delle tariffe.',
+  '🔒 Tus datos están protegidos y nunca serán cedidos a terceros con fines de spam comercial.': '🔒 I tuoi dati sono protetti e non saranno mai ceduti a terzi per scopi di spam commerciale.',
+  'Simulador de Ahorro': 'Simulatore di Risparmio',
+  'Calculá cuánto podés ahorrar en tu factura': 'Calcola quanto puoi risparmiare sulla tua bolletta',
+  'Ingresá tu gasto promedio mensual en Italia para ver el impacto estimado al unirte a nuestras tarifas comunitarias.': 'Inserisci la tua spesa media mensile in Italia per vedere l\'impatto stimato unendoti alle nostre tariffe comunitarie.',
+  '1. ¿Para qué tipo de suministro?': '1. Per che tipo di fornitura?',
+  '2. ¿Qué servicios querés optimizar?': '2. Quali servizi vuoi ottimizzare?',
+  '3. ¿Cuánto pagás actualmente por mes en Italia?': '3. Quanto paghi attualmente al mese in Italia?',
+  '🏠 Casa / Residencial': '🏠 Casa / Residenziale',
+  '🏢 Empresa / IVA': '🏢 Azienda / IVA',
+  '🏢 Negocio / Partita IVA': '🏢 Attività / Partita IVA',
+  '🏢 Negocios y Partita IVA': '🏢 Attività e Partita IVA',
+  'Empresas & Pymes': 'Aziende & PMI',
+  'Empresas & Negocios': 'Aziende & Attività',
+  'B2B & Pymes': 'B2B & PMI',
+  'Negocios con costo optimizado': 'Attività con costi ottimizzati',
+  'Negocios con costos optimizados': 'Attività con costi ottimizzati',
+  'Oferta Empresas & Locales': 'Offerta Aziende & Locali',
+  'Servicios para Empresa / Partita IVA': 'Servizi per Azienda / Partita IVA',
+  'Contactar para Negocio': 'Contatta per la tua Attività',
+  'Min: 40€': 'Min: 40€',
+  'Promedio: 120€ - 180€': 'Media: 120€ - 180€',
+  'Max: 400€+': 'Max: 400€+',
+  'Min: 150€': 'Min: 150€',
+  'Promedio: 500€ - 900€': 'Media: 500€ - 900€',
+  'Max: 1800€+': 'Max: 1800€+',
+  'Simular Ahorro': 'Calcola il Risparmio',
+  'Quiero este Ahorro': 'Voglio questo Risparmio',
+  'Quiero Asesoría Dual': 'Voglio Consulenza Dual',
+  '/mes': '/mese',
+  '/ mes': '/ mese',
+  '€/mes': '€/mese',
+  '€/año': '€/anno',
+  'Planes de Luz Disponibles para Vos': 'Piani Luce Disponibili per Te',
+  'Tarifas de luz transparentes, fijas o indexadas al PUN sin recargos sorpresa ni costos ocultos.': 'Tariffe luce trasparenti, fisse o indicizzate al PUN senza maggiorazioni a sorpresa né costi nascosti.',
+  'PRECIO FIJO': 'PREZZO FISSO',
+'PRECIO BLINDADO': 'PREZZO BLINDATO',
+  'VARIABLE': 'VARIABILE',
+  'Precio kWh fijo durante 12 meses': 'Prezzo kWh fisso per 12 mesi',
+  'Precio bloqueado durante 12 meses: pagás siempre lo mismo por kWh, sin importar lo que suba el mercado mayorista italiano.': 'Prezzo bloccato per 12 mesi: paghi sempre lo stesso per kWh, non importa quanto salga il mercato all\'ingrosso italiano.',
+  'Seguís el precio mayorista oficial (PUN) con un spread transparente y bajo. Ideal si tu consumo es flexible y querés aprovechar bajadas de mercado.': 'Segui il prezzo all\'ingrosso ufficiale (PUN) con uno spread trasparente e basso. Ideale se il tuo consumo è flessibile e vuoi sfruttare i cali di mercato.',
+  'Spread fijo y transparente sobre el PUN': 'Spread fisso e trasparente sul PUN',
+  '0€ costo de gestión': '0€ costo di gestione',
+  'Ideal para consumos bajos o variables': 'Ideale per consumi bassi o variabili',
+  'Sin sorpresas en la temporada de calefacción': 'Senza sorprese nella stagione del riscaldamento',
+  'Seleccioná el plan que mejor se adapte a tu consumo o consultanos para recomendarte el ideal.': 'Seleziona il piano che meglio si adatta ai tuoi consumi o contattaci per consigliarti quello ideale.',
+  'Elegir Plan': 'Scegli il Piano',
+  'COMBO MÁS ELEGIDO': 'COMBO PIÙ SCELTO',
+  'Pack Dual: Luz + Gas Hogar': 'Pacchetto Dual: Luce + Gas Casa',
+  '⚡🔥 Pack Dual Luz + Gas': '⚡🔥 Pacchetto Dual Luce + Gas',
+  'Unificá tus dos suministros bajo un mismo asesor en español con doble bonificación comunitaria.': 'Unisci le tue due forniture sotto un unico consulente in spagnolo con doppio bonus comunitario.',
+  'No te compliques: con solo estos 3 datos ya podés empezar a ahorrar.': 'Non complicarti: con solo questi 3 dati puoi già iniziare a risparmiare.',
+  'Tu número de Codice Fiscale (incluso si es provisorio en papel) y foto de tu pasaporte argentino vigente o DNI/CIE.': 'Il tuo numero di Codice Fiscale (anche provvisorio su carta) e foto del tuo passaporto argentino valido o DNI/CIE.',
+  'La factura del inquilino anterior o la tuya actual. Si el medidor está apagado, basta el número de serie o foto del medidor.': 'La bolletta dell\'inquilino precedente o la tua attuale. Se il contatore è spento, basta il numero di serie o una foto del contatore.',
+  'Para activar el débito bancario y no pagar entre 50€ y 150€ de depósito de garantía. Sirve Revolut, N26, Postepay o bancos tradicionales.': 'Per attivare l\'addebito bancario e non pagare tra 50€ e 150€ di deposito cauzionale. Vanno bene Revolut, N26, Postepay o banche tradizionali.',
+  'Oferta de Energía Eléctrica Doméstica': 'Offerta Energia Elettrica Domestica',
+  '⚡ Energía Eléctrica Doméstica': '⚡ Energia Elettrica Domestica',
+  'Servicios de Electricidad en Italia': 'Servizi di Elettricità in Italia',
+  'Servicios de Gas Metano en Italia': 'Servizi di Gas Metano in Italia',
+  'Oferta de Gas Doméstico': 'Offerta Gas Domestico',
+  '🔥 Gas Metano Doméstico': '🔥 Gas Metano Domestico',
+  'Planes de Gas Metano para tu Hogar o Negocio': 'Piani Gas Metano per la tua Casa o Attività',
+  'Tarifas de gas metano calibradas para el invierno italiano con precio Smc claro y auditable.': 'Tariffe gas metano calibrate per l\'inverno italiano con prezzo Smc chiaro e verificabile.',
+  'Precio Smc fijo 12 meses': 'Prezzo Smc fisso 12 mesi',
+  'Precio por Smc congelado durante un año entero. Pagá siempre lo mismo aunque llegue el invierno más frío.': 'Prezzo per Smc congelato per un anno intero. Paghi sempre lo stesso anche quando arriva l\'inverno più freddo.',
+  'Seguís el precio mayorista oficial del gas (PSV) con un margen bajo y visible en cada factura.': 'Segui il prezzo all\'ingrosso ufficiale del gas (PSV) con un margine basso e visibile in ogni bolletta.',
+  'Margen transparente sobre el PSV oficial': 'Margine trasparente sul PSV ufficiale',
+  'Precio Smc optimizado para el invierno': 'Prezzo Smc ottimizzato per l\'inverno',
+  'Ideal para consumos bajos fuera de invierno': 'Ideale per consumi bassi fuori dall\'inverno',
+  'Elegí si preferís un precio blindado todo el año o indexado al mercado oficial PSV.': 'Scegli se preferisci un prezzo bloccato tutto l\'anno o indicizzato al mercato ufficiale PSV.',
+  'Guía Bolletta Italiana': 'Guida Bolletta Italiana',
+  'La burocracia energética en Italia puede ser confusa. Acá te explicamos lo esencial en criollo para que nunca más pagues de más.': 'La burocrazia energetica in Italia può essere confusa. Qui ti spieghiamo l\'essenziale in modo chiaro, così non paghi mai più del dovuto.',
+  'Cómo entender tu': 'Come capire la tua',
+  'Con Argentina Energy: Trato transparente y por escrito:': 'Con Argentina Energy: trattamento trasparente e per iscritto:',
+  '¿Qué se necesita?': 'Cosa serve?',
+  '1. Voltura (Cambio de Titular)': '1. Voltura (Cambio di Intestatario)',
+  '2. Subentro (Reactivación)': '2. Subentro (Riattivazione)',
+  '3. Cambio de Proveedor (Switch)': '3. Cambio Fornitore (Switch)',
+  'El contador': 'Il contatore',
+  'está funcionando': 'è funzionante',
+  'fue cortado': 'è stato sospeso',
+  'y hay luz o gas en la casa. Solo se transfiere el contrato al nuevo inquilino o propietario.': 'e c\'è luce o gas in casa. Si trasferisce solo il contratto al nuovo inquilino o proprietario.',
+  'o dado de baja por el dueño anterior. Requiere reactivación técnica.': 'o disattivato dal proprietario precedente. Richiede la riattivazione tecnica.',
+  'El medidor existe físicamente pero el servicio': 'Il contatore esiste fisicamente ma il servizio',
+  'No dictes tu código POD o PDR por teléfono:': 'Non dettare il tuo codice POD o PDR al telefono:',
+  'Consejos de seguridad de Argentina Energy para compatriotas': 'Consigli di sicurezza di Argentina Energy per i connazionali',
+  '¡Cuidado con el Telemarketing Agresivo en Italia!': 'Attenzione al Telemarketing Aggressivo in Italia!',
+  'Nunca digas la palabra "SÍ" al inicio de una llamada desconocida:': 'Non dire mai la parola "SÌ" all\'inizio di una chiamata sconosciuta:',
+  '"Le llamamos de ARERA / Su distribuidor va a cortar la luz":': '"Chiamiamo da ARERA / Il suo distributore staccherà la luce":',
+  'En Italia se han registrado casos donde editan grabaciones de audio ("¿Usted es el titular?" - "Sí") para simular una contratación vocal. Respondé "¿Quién habla?" o "¿De parte de quién?".': 'In Italia sono stati registrati casi in cui modificano registrazioni audio ("Lei è l\'intestatario?" - "Sì") per simulare una contrattazione vocale. Rispondi "Chi parla?" o "Da parte di chi?".',
+  'Con solo el código POD y tu Codice Fiscale, un operador deshonesto puede traspasar tu contrato sin tu firma.': 'Con il solo codice POD e il tuo Codice Fiscale, un operatore disonesto può trasferire il tuo contratto senza la tua firma.',
+  'FALSO. ARERA es el ente regulador y NUNCA llama a usuarios individuales por teléfono para vender tarifas. Son call centers que buscan activar contratos con engaños.': 'FALSO. L\'ARERA è l\'ente regolatore e NON chiama mai i singoli utenti per vendere tariffe. Sono call center che cercano di attivare contratti con l\'inganno.',
+  'Glosario Rápido de la Bolletta': 'Glossario Rapido della Bolletta',
+  'Los 4 términos clave que todo argentino en Italia debe conocer al alquilar o comprar:': 'Le 4 parole chiave che ogni argentino in Italia deve conoscere quando affitta o compra:',
+  'El DNI de tu luz': 'Il DNI della tua luce',
+  'El DNI de tu gas': 'Il DNI del tuo gas',
+  '(Tu DNI de luz)': '(Il tuo DNI della luce)',
+  '(Tu DNI de gas)': '(Il tuo DNI del gas)',
+  'Código único que identifica el punto de conexión eléctrica de tu vivienda. Empieza con "IT" y lo necesitás para cualquier trámite.': 'Codice unico che identifica il punto di connessione elettrica della tua abitazione. Inizia con "IT" e ti serve per qualsiasi pratica.',
+  'Es el equivalente al POD pero para el suministro de gas metano. Un código numérico de 14 dígitos.': 'È l\'equivalente del POD ma per la fornitura di gas metano. Un codice numerico di 14 cifre.',
+  'Sintesi Importi Fatturati (Desglose):': 'Sintesi Importi Fatturati (Riepilogo):',
+  'DATI FORNITURA / DATOS DE SUMINISTRO:': 'DATI FORNITURA / DATI DI FORNITURA:',
+  'Cargos fijos nacionales': 'Oneri fissi nazionali',
+  'Cargos fijos nacionales fijados por ley': 'Oneri fissi nazionali fissati per legge',
+  'Regulado por el Estado (igual en todas las empresas)': 'Regolato dallo Stato (uguale in tutte le aziende)',
+  'Impuestos estatales italianos': 'Imposte statali italiane',
+  'Costos regulados por el Estado italiano, iguales para todos los proveedores. No son negociables.': 'Costi regolati dallo Stato italiano, uguali per tutti i fornitori. Non sono negoziabili.',
+  'Mercado libre': 'Mercato libero',
+  'El régimen donde vos elegís tu proveedor y tarifa, a diferencia del antiguo "Mercato Tutelato" ya extinguido.': 'Il regime in cui scegli tu fornitore e tariffa, a differenza del vecchio "Mercato Tutelato" ormai estinto.',
+  '*Estimación basada en tarifas de grupo actuales frente a la media del mercado italiano.': '*Stima basata sulle tariffe di gruppo attuali rispetto alla media del mercato italiano.',
+  '★ El único punto negociable donde te ahorramos dinero': '★ L\'unico punto negoziabile dove ti facciamo risparmiare',
+  'Activación:': 'Attivazione:',
+  'Atención:': 'Assistenza:',
+  'Ventajas:': 'Vantaggi:',
+  'Descuento dual:': 'Sconto Dual:',
+  'Próximos pasos:': 'Prossimi passi:',
+  'Contacto por WhatsApp': 'Contatto via WhatsApp',
+  'Argentina Energy — Luz y Gas en Italia para Argentinos': 'Argentina Energy — Luce e Gas in Italia per gli argentini',
+  '🇮🇹 Documento en Italia': '🇮🇹 Documento in Italia',
+  ' Equivalente en Argentina:': ' Equivalente in Latina:',
+  '¿Para qué sirve en Luz y Gas?': 'A cosa serve per Luce e Gas?',
+  '🏛️ ¿Cómo se obtiene en Italia?': '🏛️ Come si ottiene in Italia?',
+  'Tip Argentina Energy para recién llegados:': 'Tip Argentina Energy per chi è appena arrivato:',
+  'Ocultar detalles': 'Nascondi dettagli',
+  'Ver cómo tramitarlo y tips': 'Vedi come fare la pratica e consigli',
+  'Consultar': 'Consulta',
+  'Servicio: ': 'Servizio: ',
+  'Ahorro: ': 'Risparmio: ',
+  'Hola Argentina Energy, tengo una consulta sobre trámites y documentos en Italia:': 'Ciao Argentina Energy, ho una domanda su pratiche e documenti in Italia:'
+};
+const PLACEHOLDER_DICT = {
+  'doc-search': ['Buscar: CF, SPID, CUIL, IBAN...', 'Cerca: CF, SPID, CUIL, IBAN...'],
+  'c-nombre': ['Tu nombre', 'Il tuo nome'],
+  'c-apellido': ['Tu apellido', 'Il tuo cognome'],
+  'c-email': ['ejemplo@correo.com', 'esempio@email.com'],
+  'c-telefono': ['+39 345 0000000', '+39 345 0000000'],
+  'c-mensaje': ['Contanos tu situación: ¿te mudaste recientemente?, ¿querés bajar el costo de tu factura actual?, ¿necesitas hacer una voltura?...', 'Raccontaci la tua situazione: ti sei trasferito da poco?, vuoi abbassare il costo della tua bolletta attuale?, devi fare una voltura?...'],
+  'audit-name': ['Ej. Juan Pérez', 'Es. Juan Pérez'],
+  'audit-phone': ['Ej. +39 345 1234567', 'Es. +39 345 1234567'],
+  'audit-email': ['tuemail@ejemplo.com', 'tuaemail@esempio.com']
+};
+const FAQ_LIST_IT = [
+  { category: 'documentos', question: 'Ho bisogno del Codice Fiscale per attivare la luce o il gas?', answer: 'Sì, è obbligatorio. Il Codice Fiscale è l\'equivalente del CUIL/CUIT argentino ed è il dato che tutte le compagnie energetiche italiane richiedono per identificarti legalmente. Si ottiene gratuitamente presso l\'Agenzia delle Entrate o, se sei appena arrivato, il consolato argentino può orientarti su come richiederlo.' },
+  { category: 'documentos', question: 'E se non ho ancora il Permesso di Soggiorno?', answer: 'Puoi comunque attivare un contratto se hai la ricevuta della richiesta del permesso, insieme al tuo Codice Fiscale e a un passaporto valido. Non serve aspettare la tessera fisica per iniziare le pratiche di luce e gas.' },
+  { category: 'documentos', question: 'Lo SPID è obbligatorio per stipulare con voi?', answer: 'No. Lo SPID è utile per le pratiche con la pubblica amministrazione italiana (simile alla Clave Fiscal dell\'AFIP), ma per attivare luce e gas con Argentina Energy ci servono solo il tuo Codice Fiscale, il documento e i tuoi dati di contatto.' },
+  { category: 'tramites', question: 'Qual è la differenza tra Voltura e Subentro?', answer: 'La Voltura si usa quando il contatore è già attivo e cambia solo l\'intestatario del contratto (ad esempio, hai affittato una casa dove c\'era già la luce). Il Subentro si usa quando il servizio è stato sospeso dall\'inquilino precedente e va riattivato tecnicamente, il che richiede qualche giorno in più.' },
+  { category: 'tramites', question: 'Quanto tempo serve per un cambio fornitore (switch)?', answer: 'Il cambio fornitore mantenendo lo stesso punto di fornitura (POD/PDR) richiede di solito tra 10 e 15 giorni lavorativi, senza alcuna interruzione del servizio durante il processo.' },
+  { category: 'tramites', question: 'La Voltura o il Subentro con voi hanno un costo?', answer: 'No, la gestione di Voltura e Subentro con Argentina Energy non ha costi di gestione. Si applicano solo, se previsti, gli oneri tecnici regolati che il distributore locale chiede per la riattivazione fisica del contatore.' },
+  { category: 'general', question: 'Perché la mia bolletta italiana è così alta rispetto a quanto mi aspettavo?', answer: 'La bolletta combina un costo dell\'energia (l\'unica parte negoziabile), costi di trasporto e gestione del contatore, oneri di sistema fissati dallo Stato e imposte (IVA del 10% o 22% in base ai consumi). Noi possiamo ottimizzare solo la parte energetica, ma è lì che si trova la differenza maggiore tra i fornitori.' },
+  { category: 'general', question: 'Cosa conviene di più, tariffa fissa o indicizzata?', answer: 'La tariffa fissa conviene se preferisci la prevedibilità totale e non vuoi sorprese di mese in mese. L\'indicizzata (PUN o PSV) può essere più economica nei mesi di mercato basso, ma varia. Ti aiutiamo a scegliere in base ai tuoi consumi reali.' },
+  { category: 'general', question: 'Il servizio viene interrotto durante il cambio fornitore?', answer: 'No. Per legge italiana, il cambio fornitore mantenendo lo stesso punto di fornitura (switch) non comporta mai un\'interruzione di luce o gas. La transizione è 100% tecnica e amministrativa, invisibile per te.' }
+];
+const DOC_EQUIVALENCES_IT = [
+  { id: 'cf', iconName: 'FileText', italianDoc: 'Codice Fiscale', italianAcronym: 'CF', argentinoEquivalent: 'CUIL / CUIT', tag: 'Indispensabile', description: 'Codice alfanumerico unico che identifica ogni persona davanti allo Stato italiano per qualsiasi pratica amministrativa, fiscale o contrattuale.', energyUtilityRole: 'È il dato obbligatorio numero uno per attivare qualsiasi contratto di luce o gas. Senza Codice Fiscale non si può firmare alcun contratto di fornitura.', howToGetInItaly: 'Si richiede gratuitamente in qualsiasi ufficio dell\'Agenzia delle Entrate presentando il passaporto. Si ottiene al momento in formato cartaceo.', proTip: 'Richiedilo appena arrivi, anche prima di avere una residenza fissa: molte pratiche (SIM, affitto, banca) lo richiedono.' },
+  { id: 'residenza', iconName: 'Home', italianDoc: 'Certificato di Residenza', italianAcronym: '—', argentinoEquivalent: 'Certificado de Domicilio', tag: 'Residenza', description: 'Documento rilasciato dal Comune che attesta che vivi stabilmente a un determinato indirizzo all\'interno di quella città.', energyUtilityRole: 'Non sempre è obbligatorio per attivare il servizio, ma aiuta a confermare l\'indirizzo esatto della fornitura e accelera la Voltura.', howToGetInItaly: 'Si richiede all\'Anagrafe del Comune dove vivi, dopo aver registrato la tua residenza (dichiarazione di residenza).', proTip: 'Se non hai ancora fatto il cambio di residenza, puoi comunque attivare il servizio con il contratto di affitto come supporto.' },
+  { id: 'spid', iconName: 'Key', italianDoc: 'SPID', italianAcronym: 'SPID', argentinoEquivalent: 'Clave Fiscal / Mi Argentina', tag: 'Digitale', description: 'Identità digitale unica per accedere a tutti i servizi pubblici italiani online (fisco, sanità, INPS, comuni).', energyUtilityRole: 'Alcuni fornitori lo richiedono per gestire il tuo account online, ma con Argentina Energy non serve: facciamo noi la gestione per te.', howToGetInItaly: 'Si ottiene tramite fornitori certificati (Poste Italiane, Aruba, TIM, ecc.) con riconoscimento facciale o in presenza.', proTip: 'Non è urgente all\'arrivo; puoi rimandarlo se ti crea complicazioni.' },
+  { id: 'iban', iconName: 'CreditCard', italianDoc: 'IBAN', italianAcronym: 'IBAN', argentinoEquivalent: 'CBU', tag: 'Bancario', description: 'Codice internazionale che identifica il tuo conto bancario per pagamenti e addebiti automatici in Italia e in tutta l\'Unione Europea.', energyUtilityRole: 'Permette di attivare l\'addebito diretto per pagare la bolletta, evitando il deposito cauzionale di 50€-150€ che viene chiesto senza domiciliazione.', howToGetInItaly: 'Lo fornisce la tua banca o un wallet digitale (Revolut, N26, Postepay, banche tradizionali) all\'apertura del conto.', proTip: 'Revolut o N26 si aprono 100% online in pochi minuti e sono accettati senza problemi dalle compagnie energetiche.' },
+  { id: 'permesso', iconName: 'Briefcase', italianDoc: 'Permesso di Soggiorno', italianAcronym: 'PDS', argentinoEquivalent: 'Residencia Permanente/Temporaria', tag: 'Migratorio', description: 'Autorizzazione che permette a un cittadino non europeo di risiedere legalmente in Italia per un periodo determinato.', energyUtilityRole: 'Non è un requisito stringente delle compagnie energetiche; bastano la ricevuta della richiesta più il Codice Fiscale e il passaporto.', howToGetInItaly: 'Si richiede in Questura o tramite il kit postale delle Poste, dopo l\'appuntamento al Comune competente.', proTip: 'Conserva sempre la ricevuta gialla: vale come documento valido per quasi tutte le pratiche mentre aspetti la tessera fisica.' },
+  { id: 'tessera', iconName: 'ShieldCheck', italianDoc: 'Tessera Sanitaria', italianAcronym: 'TS', argentinoEquivalent: 'Credencial de Obra Social / PAMI', tag: 'Sanità', description: 'Tessera che dà accesso al Servizio Sanitario Nazionale e funziona anche come Codice Fiscale fisico.', energyUtilityRole: 'Non serve per attivare luce o gas, ma avendo stampato il Codice Fiscale molte persone la usano come prova rapida di quel dato.', howToGetInItaly: 'Viene emessa automaticamente quando ti iscrivi al Servizio Sanitario Nazionale tramite l\'ASL della tua zona.', proTip: 'Arriva per posta alcune settimane dopo l\'iscrizione; nel frattempo usa la ricevuta del Codice Fiscale cartaceo.' },
+  { id: 'pec', iconName: 'Smartphone', italianDoc: 'PEC (Posta Elettronica Certificata)', italianAcronym: 'PEC', argentinoEquivalent: 'Email verificado ante AFIP/Correo', tag: 'Comunicazione', description: 'Email certificata con valore legale, usata per le comunicazioni ufficiali con la pubblica amministrazione e le aziende.', energyUtilityRole: 'Serve per ricevere conferme formali di recesso dal contratto precedente o reclami, anche se Argentina Energy gestisce questo per te nella maggior parte dei casi.', howToGetInItaly: 'Si attiva con fornitori come Aruba o Poste Italiane; alcuni piani sono gratuiti per il primo anno.', proTip: 'Non è una priorità all\'arrivo; puoi risolverlo più avanti se qualche pratica specifica lo richiede.' },
+  { id: 'doble', iconName: 'ShieldCheck', italianDoc: 'Doppia Cittadinanza / Passaporto Italiano', italianAcronym: 'ITA-ARG', argentinoEquivalent: 'DNI argentino + Cittadinanza italiana (oriundi)', tag: 'Oriundi', description: 'Molti argentini in Italia hanno la doppia cittadinanza per discendenza. Con il passaporto italiano le pratiche di luce e gas sono ancora più rapide: non serve il Permesso di Soggiorno.', energyUtilityRole: 'Con documento italiano + Codice Fiscale puoi firmare il contratto direttamente e attivare la domiciliazione bancaria senza deposito cauzionale. Argentina Energy verifica gratis il tuo caso.', howToGetInItaly: 'Se hai già la cittadinanza riconosciuta, presenta il passaporto o la carta d\'identità italiana. Se sei in attesa, bastano passaporto argentino + ricevuta + Codice Fiscale.', proTip: 'Porta il certificato di nascita argentino con apostille e traduzione: accelera residenza, tessera sanitaria e contratti di energia.' },
+];
+const TESTIMONIALS_IT = [
+  { id: 1, avatar: 'img/avatars/avatar1.svg', name: 'María Fernández', city: 'Milano', origin: 'Buenos Aires, Argentina', rating: 5, comment: 'Sono in Italia da un anno e non capivo nulla della bolletta. Mi hanno spiegato tutto e ho finito per pagare 35€ in meno al mese tra luce e gas.', service: 'Luce + Gas', savings: '-35€/mese' },
+  { id: 2, avatar: 'img/avatars/avatar2.svg', name: 'Diego Suárez', city: 'Torino', origin: 'Córdoba, Argentina', rating: 5, comment: 'Ho dovuto fare un Subentro perché l\'appartamento era rimasto senza gas. Si sono occupati di tutto e in una settimana avevo già il riscaldamento.', service: 'Gas', savings: '-28€/mese' },
+  { id: 3, avatar: 'img/avatars/avatar3.svg', name: 'Lucía Giménez', city: 'Roma', origin: 'Rosario, Argentina', rating: 5, comment: 'Ho un locale di ristorazione e il risparmio sulla bolletta della luce è stato molto più di quanto mi aspettassi. Inoltre mi hanno spiegato come dedurre l\'IVA.', service: 'Azienda', savings: '-180€/mese' },
+  { id: 4, avatar: 'img/avatars/avatar4.svg', name: 'Martín Álvarez', city: 'Bologna', origin: 'Mendoza, Argentina', rating: 4, comment: 'Quello che apprezzo di più è che rispondono su WhatsApp in spagnolo. Ho cambiato fornitore senza alcuna interruzione del servizio, proprio come mi avevano detto.', service: 'Luce', savings: '-22€/mese' }
+];
+const LEGAL_CONTENT_IT = {
+  privacy: `
+    <div class="flex items-center gap-3 pb-3 border-b border-sky-100"><div class="p-2.5 rounded-xl bg-sky-100 text-sky-700"><i data-lucide="lock" class="w-5 h-5"></i></div><div><h3 class="text-xl font-black text-slate-900">Informativa sulla Privacy</h3><p class="text-xs text-sky-700 font-medium">Argentina Energy - FraStel Corporation Group</p></div></div>
+    <div class="space-y-3 text-slate-600 leading-relaxed font-normal mt-4">
+      <p><strong class="text-slate-900">1. Responsabile del Trattamento:</strong> Argentina Energy (FraStel Corporation Group), con sede in Via Bartolomeo Bruni 7, 12100 Cuneo (CN), Italia, email: info@argentinaenergy.it.</p>
+      <p><strong class="text-slate-900">2. Finalità del Trattamento:</strong> I dati forniti tramite i nostri moduli o canali di contatto sono utilizzati esclusivamente per: (a) effettuare l\'analisi e il confronto delle tariffe di luce e gas, (b) gestire l\'intermediazione e le pratiche di cambio fornitore, voltura o subentro richieste dall\'utente, (c) mantenere la comunicazione diretta per la consulenza personalizzata.</p>
+      <p><strong class="text-slate-900">3. Base Giuridica:</strong> Il trattamento si fonda sul consenso espresso dell\'utente che trasmette volontariamente i propri dati o documenti di bolletta ai sensi del Regolamento Generale sulla Protezione dei Dati (GDPR UE 2016/679).</p>
+      <p><strong class="text-slate-900">4. Nessuna Commercializzazione a Terzi:</strong> Argentina Energy NON vende né cede banche dati a società di telemarketing invasivo.</p>
+      <p><strong class="text-slate-900">5. Diritti ARCO:</strong> Puoi esercitare i tuoi diritti di accesso, rettifica, cancellazione o opposizione inviando un\'email a info@argentinaenergy.it.</p>
+    </div>`,
+  cookies: `
+    <div class="flex items-center gap-3 pb-3 border-b border-sky-100"><div class="p-2.5 rounded-xl bg-amber-100 text-amber-700"><i data-lucide="cookie" class="w-5 h-5"></i></div><div><h3 class="text-xl font-black text-slate-900">Informativa sui Cookie</h3><p class="text-xs text-amber-700 font-medium">Trasparenza e navigazione tecnica</p></div></div>
+    <div class="space-y-3 text-slate-600 leading-relaxed font-normal mt-4">
+      <p>Questo sito utilizza cookie tecnici indispensabili per il funzionamento e la corretta navigazione del sito, permettendo di salvare le preferenze di visualizzazione e lo stato della calcolatrice.</p>
+      <p>Non raccogliamo cookie di tracciamento pubblicitario abusivo di terze parti senza il tuo consenso. Puoi configurare il tuo browser per bloccare i cookie, anche se alcune funzioni del simulatore potrebbero risentirne.</p>
+    </div>`,
+  terms: `
+    <div class="flex items-center gap-3 pb-3 border-b border-sky-100"><div class="p-2.5 rounded-xl bg-indigo-100 text-indigo-700"><i data-lucide="shield" class="w-5 h-5"></i></div><div><h3 class="text-xl font-black text-slate-900">Termini e Condizioni del Servizio</h3><p class="text-xs text-indigo-700 font-medium">Condizioni di consulenza energetica</p></div></div>
+    <div class="space-y-3 text-slate-600 leading-relaxed font-normal mt-4">
+      <p>Argentina Energy agisce come consulente e gestore di acquisti collettivi di energia per la comunità ispanofona in Italia.</p>
+      <p>La sottoscrizione e l\'attivazione formale dei contratti di fornitura elettrica e di gas sono regolate dalle norme ARERA e dalle condizioni contrattuali del fornitore autorizzato scelto dal cliente.</p>
+      <p>Le stime di risparmio sono calcolate in base alle tariffe medie del mercato all\'ingrosso e non costituiscono una garanzia immutabile se variano le abitudini di consumo individuali.</p>
+    </div>`
+};
+const origText = new WeakMap();
+function TT(es) { return SITE_LANG === 'it' && TRANSLATION_DICT[es] !== undefined ? TRANSLATION_DICT[es] : es; }
+function applyStaticText() {
+  document.querySelectorAll('body *').forEach(function (el) {
+    if (el.hasAttribute('data-nt')) return;
+    el.childNodes.forEach(function (n) {
+      if (n.nodeType !== 3) return;
+      var v = n.nodeValue;
+      var t = v.trim();
+      if (!t) return;
+      if (SITE_LANG === 'it') {
+        if (origText.has(n)) return;
+        var tr = TRANSLATION_DICT[t];
+        if (tr !== undefined && tr !== t) {
+          origText.set(n, v);
+          n.nodeValue = v.replace(t, tr);
+        }
+      } else if (origText.has(n)) {
+        n.nodeValue = origText.get(n);
+        origText.delete(n);
+      }
+    });
+  });
+}
+function refreshPlaceholders() {
+  var it = SITE_LANG === 'it';
+  Object.keys(PLACEHOLDER_DICT).forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.placeholder = PLACEHOLDER_DICT[id][it ? 1 : 0];
+  });
+}
+function setLanguage(lang) {
+  SITE_LANG = lang === 'it' ? 'it' : 'es';
+  document.documentElement.lang = SITE_LANG;
+  document.querySelectorAll('.lang-toggle').forEach(function (b) {
+    var active = b.getAttribute('data-lang') === SITE_LANG;
+    b.className = 'lang-toggle flex-1 sm:flex-none px-2.5 py-1.5 rounded-full text-[10px] transition-all cursor-pointer ' + (active ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-sm font-black' : 'text-slate-600 hover:text-sky-700 font-bold');
+  });
+  renderFaqList(faqCategory);
+  renderDocs();
+  renderTestimonials();
+  setProfile(calcProfile);
+  updateCalculator();
+  applyStaticText();
+  refreshPlaceholders();
+  document.title = TT('Argentina Energy — Luz y Gas en Italia para Argentinos');
+}
+</script>
+</body>
+</html>
+
